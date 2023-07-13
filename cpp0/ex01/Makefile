@@ -10,50 +10,59 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= PhoneBook
-	
-CC			= c++
-FLAGS		= -Wall -Wextra -Werror
-RM			= rm -rf
+# SIMPLE ===================================================================================
+NAME = myphonebook
+# ==========================================================================================
 
-OBJDIR = .objFiles
+# SRCS =====================================================================================
+SRCS_DIR = sources/
+SRCS =	Phonebook.cpp \
+		Contact.cpp
+# ==========================================================================================
 
-FILES		= main Contact PhoneBook
+# INCLUDES =================================================================================
+INCS_DIR = includes/Contact.hpp
+# ==========================================================================================
 
-SRC			= $(FILES:=.cpp)
-OBJ			= $(addprefix $(OBJDIR)/, $(FILES:=.o))
-HEADER		= Contact.hpp PhoneBook.hpp
+# DEPEDENCIES ==============================================================================
+DEPS = $(INCS_DIR)/
+# ==========================================================================================
 
-#Colors:
-GREEN		=	\e[92;5;118m
-YELLOW		=	\e[93;5;226m
-GRAY		=	\e[33;2;37m
-RESET		=	\e[0m
-CURSIVE		=	\e[33;3m
+# FLAGS ====================================================================================
+INCLUDE = -I$(INCS_DIR)
+FLAGS = -Wall -Wextra -Werror $(INCLUDE)
+# ==========================================================================================
 
-#Debug 
-ifeq ($(DEBUG), 1)
-   OPTS = -g
-endif
+# OBJS =====================================================================================
+OBJS_DIR 	= 	objects/
+OBJ 		= 	$(SRCS:.cpp=.o)
+OBJS 		= 	$(addprefix $(OBJS_DIR), $(OBJ))
+# ==========================================================================================
+
+# FROM SUBJECT =============================================================================
+$(OBJS_DIR)%.o :	$(SRCS_DIR)%.cpp $(INCS_DIR)
+	@mkdir -p $(OBJS_DIR)
+	@mkdir -p $(OBJS_DIR)/contacts
+	@echo "Compiling: $<"
+	@clang++ $(FLAGS) -c $< -o $@
+
+$(NAME): $(OBJS)
+	@clang++ -g -fsanitize=address $(FLAGS) -o $(NAME) $(OBJS)
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(HEADER)
-	@$(CC) $(OBJ) $(OPTS) -o $(NAME)
-	@printf "$(_SUCCESS) $(GREEN)- Executable ready.\n$(RESET)"
-
-$(OBJDIR)/%.o: %.cpp $(HEADER)
-	@mkdir -p $(dir $@)
-	@$(CC) $(FLAGS) $(OPTS) -c $< -o $@
-
 clean:
-	@$(RM) $(OBJDIR) $(OBJ)
-	@printf "$(YELLOW)    - Object files removed.$(RESET)\n"
+	@echo "Cleaning: $(OBJS_DIR)"
+	@rm -rf $(OBJS_DIR)
 
 fclean: clean
-	@$(RM) $(NAME)
-	@printf "$(YELLOW)    - Executable removed.$(RESET)\n"
+	@echo "Cleaning: $(NAME)"
+	@rm -f $(NAME)
 
 re: fclean all
+# ==========================================================================================
 
-.PHONY: all clean fclean re bonus norm
+# SUP ======================================================================================
+check: $(NAME)
+	./$(NAME)
+# ==========================================================================================
