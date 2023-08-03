@@ -5,36 +5,23 @@
 #                                                     +:+ +:+         +:+      #
 #    By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/04/24 09:01:45 by imurugar          #+#    #+#              #
-#    Updated: 2023/04/24 09:01:45 by imurugar         ###   ########.fr        #
+#    Created: 2023/04/24 06:11:07 by imurugar          #+#    #+#              #
+#    Updated: 2023/04/24 06:11:07 by imurugar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
 # SIMPLE ===================================================================================
-NAME = Zombie
+NAME = megaphone
 # ==========================================================================================
 
 # SRCS =====================================================================================
-SRCS_DIR = src/
-SRCS =	main.cpp \
-		Zombie.cpp \
-		newZombie.cpp \
-		randomChump.cpp
-# ==========================================================================================
-
-# INCLUDES =================================================================================
-INCS_DIR = inc/
-INCLUDE = -I$(INCS_DIR)
-# ==========================================================================================
-
-# DEPEDENCIES ==============================================================================
-DEPS = $(INCS_DIR)/
+SRCS_DIR = ./
+SRCS = megaphone.cpp
 # ==========================================================================================
 
 # FLAGS ====================================================================================
 DEBUG = -g -fsanitize=address
-FLAGS = $(DEBUG) -std=c++98 -pedantic -Wall -Wextra -Werror $(INCLUDE)
+FLAGS = $(DEBUG) -std=c++98 -pedantic -Wall -Wextra -Werror
 # ==========================================================================================
 
 # UTILS ====================================================================================
@@ -57,13 +44,13 @@ CURSIVE		=	\e[33;3m
 # ==========================================================================================
 
 # FROM SUBJECT =============================================================================
-$(OBJS_DIR)%.o :	$(SRCS_DIR)%.cpp $(INCS_DIR)
+$(OBJS_DIR)%.o :	$(SRCS_DIR)%.cpp
 	@mkdir -p $(OBJS_DIR)
 	@printf "$(GREEN)    - Compiling $(GRAY)$<$(RESET)\n"
 	@$(CC) $(FLAGS) -c $< -o $@
-	
+
 $(NAME): $(OBJS)
-	@$(CC)  $(FLAGS) -o $(NAME) $(OBJS)
+	@$(CC) $(FLAGS) -o $(NAME) $(OBJS)
 	@printf "$(GREEN)    - Executable ready.\n$(RESET)"
 
 all: $(NAME)
@@ -80,7 +67,19 @@ re: fclean all
 
 # SUP ======================================================================================
 check: $(NAME)
-	./$(NAME)
+	@/bin/echo
+	@/bin/echo "Expected  : SHHHHH... I THINK THE STUDENTS ARE ASLEEP..."
+	@/bin/echo -n "Megaphone : "
+	@./$(NAME) "shhhhh... I think the students are asleep..."
+	@/bin/echo
+	@/bin/echo "Expected  : DAMNIT ! SORRY STUDENTS, I THOUGHT THIS THING WAS OFF."
+	@/bin/echo -n "Megaphone : "
+	@./$(NAME) "Damnit ! Sorry students, I thought this thing was off."
+	@/bin/echo
+	@/bin/echo "Expected  : * LOUD AND UNBEARABLE FEEDBACK NOISE *"
+	@/bin/echo -n "Megaphone : "
+	@./$(NAME)
+	@/bin/echo
 # ==========================================================================================
 
 .PHONY: all clean fclean re
