@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 06:11:26 by imurugar          #+#    #+#             */
-/*   Updated: 2023/04/24 08:30:55 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/08/06 03:11:37 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 PhoneBook::PhoneBook()
 {
+	this->_haveContacts = false;
 }
 
 PhoneBook::~PhoneBook()
@@ -24,7 +25,7 @@ void    PhoneBook::welcome(bool print_welcome) const {
 	if (print_welcome)
 	{
     	std::cout << std::endl;
-    	std::cout << "Welcome to the most useless agenda in the world." << std::endl;
+    	std::cout << "Welcome to the most useless phonebook in the world." << std::endl;
     	std::cout << std::endl;
 	}
     std::cout << "--------------USAGE---------------" << std::endl;
@@ -40,6 +41,7 @@ void    PhoneBook::addContact(void) {
     this->_contacts[i % 8].init();
     this->_contacts[i % 8].setIndex(i % 8);
     i++;
+	this->_haveContacts = true;
 }
 
 void    PhoneBook::printContacts(void) const {
@@ -51,25 +53,39 @@ void    PhoneBook::printContacts(void) const {
     std::cout << std::endl;
 }
 
-int     PhoneBook::_readInput() const {
-    int     input = -1;
-    bool    valid = false;
-    do
-    {
+int PhoneBook::_readInput() const {
+    int input = -1;
+    bool valid = false;
+    do {
+        std::string line;
         std::cout << "Please enter the contact index, 0 to 7: " << std::flush;
-        std::cin >> input;
-        if (std::cin.good() && (input >= 0 && input <= 7)) {
-            valid = true;
-        } else {
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
-            std::cout << "Invalid, I know it's difficult, but i also know that you can enter a valid index from 0 to 8." << std::endl;
+        std::getline(std::cin, line);
+
+        // Verificar si la línea está vacía
+        if (line.empty()) {
+            std::cout << "Invalid input. Please enter a valid index from 0 to 7." << std::endl;
+            continue;
         }
+
+        std::istringstream iss(line);
+        iss >> input;
+
+        // Verificar si la conversión fue exitosa y no hay caracteres no válidos
+        if (!iss.fail() && iss.eof() && input >= 0 && input <= 7)
+            valid = true;
+        else
+            std::cout << "Invalid input. Please enter a valid index from 0 to 7." << std::endl;
+        
     } while (!valid);
-    return (input);
+    return input;
 }
 
 void    PhoneBook::search(void) const {
-    int i = this->_readInput();
-    this->_contacts[i].display(i);
+	if(this->_haveContacts)
+	{
+    	int i = this->_readInput();
+    	if(this->_contacts[i].display(i) == false)
+			search();
+	} else
+		std::cout << "There are no contacts in the phonebook" << std::endl;
 }

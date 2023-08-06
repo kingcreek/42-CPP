@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 06:11:17 by imurugar          #+#    #+#             */
-/*   Updated: 2023/08/02 10:21:28 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/08/06 01:59:50 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 #define CONTACT_HPP
 
 #include <iostream>
+#include <sstream>
 #include <iomanip>
-#include <limits>
+#include <string>
 
 class Contact
 {
@@ -27,15 +28,16 @@ private:
     std::string _darkestSecret;
     int         _index;
 
-    std::string _printLen(std::string str) const;
     std::string _getInput(std::string str) const;
+	size_t CountLengthWithMultibyte(const std::string& str) const;
+	std::string AdjustColumnWidth(const std::string& str, int colWidth) const;
 
 public:
     Contact();
     ~Contact();
     void    init(void);
     void    view(int index) const;
-    void    display(int index) const;
+    bool    display(int index) const;
     void    setIndex(int i);
 };
 

@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 06:11:29 by imurugar          #+#    #+#             */
-/*   Updated: 2023/08/02 10:20:48 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/08/06 02:51:35 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class PhoneBook
 private:
     Contact     _contacts[8];
     int         _readInput(void) const;
-    // uint64_t    _numberOfContacts;
+	bool		_haveContacts;
 public:
     PhoneBook();
     ~PhoneBook();
