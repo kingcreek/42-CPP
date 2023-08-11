@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 06:11:26 by imurugar          #+#    #+#             */
-/*   Updated: 2023/08/06 03:11:37 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/08/11 00:29:17 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,13 @@ int PhoneBook::_readInput() const {
         std::string line;
         std::cout << "Please enter the contact index, 0 to 7: " << std::flush;
         std::getline(std::cin, line);
-
-        // Verificar si la línea está vacía
+		//Handle ctrl D
+		if (std::cin.eof() == true)
+        {
+			std::cout << "\nCtrl + D? Ok, bye bye" << std::endl;
+            exit(0);
+        }
+        // Check empty line
         if (line.empty()) {
             std::cout << "Invalid input. Please enter a valid index from 0 to 7." << std::endl;
             continue;
@@ -70,7 +75,7 @@ int PhoneBook::_readInput() const {
         std::istringstream iss(line);
         iss >> input;
 
-        // Verificar si la conversión fue exitosa y no hay caracteres no válidos
+        // Check correct conversion and wrong values/characters
         if (!iss.fail() && iss.eof() && input >= 0 && input <= 7)
             valid = true;
         else

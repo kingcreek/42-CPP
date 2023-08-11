@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 06:11:15 by imurugar          #+#    #+#             */
-/*   Updated: 2023/08/06 03:10:51 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/08/11 02:10:46 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,25 +20,63 @@ Contact::~Contact()
 {
 }
 
+bool Contact::IsValidPhoneNumber(const std::string &phoneNumber) const {
+    for (std::string::const_iterator it = phoneNumber.begin(); it != phoneNumber.end(); ++it) {
+        char c = *it;
+        if (!std::isdigit(c) && c != '+' && c != ' ' && c != '(' && c != ')' && c != '-' && c != '#' && c != '*') {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool Contact::IsSpanishCharacter(char c) const {
+    const char *validChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZáéíóúÁÉÍÓÚñÑçÇ!\"#$%&'()*+,-./0123456789:;<=>?@[\\]^_`{|}~ ";
+    for (const char *p = validChars; *p != '\0'; ++p) {
+        if (*p == c) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Contact::ContainsSpanishCharacters(const std::string &input) const {
+    for (std::string::const_iterator it = input.begin(); it != input.end(); ++it) {
+        if (!IsSpanishCharacter(*it) && !std::isspace(*it)) {
+            return false;
+        }
+    }
+    return true;
+}
+
 std::string Contact::_getInput(std::string str) const {
     std::string input = "";
     bool valid = false;
     do {
         std::cout << str << std::flush;
+
         std::getline(std::cin, input);
+		if (std::cin.eof() == true)
+        {
+			std::cout << "\nCtrl + D? Ok, bye bye" << std::endl;
+            exit(0);
+        }
 
         bool containsOnlySpaces = true;
+        bool containsValid = false;
+
         for (size_t i = 0; i < input.length(); i++) {
             if (!std::isspace(input[i])) {
                 containsOnlySpaces = false;
-                break;
+				break;
             }
         }
+		if (ContainsSpanishCharacters(input))
+            containsValid = true;
 
-        if (std::cin.good() && !input.empty() && !containsOnlySpaces) {
+        if (!input.empty() && !containsOnlySpaces && containsValid) {
             valid = true;
         } else {
-            std::cin.clear();
             std::cout << "Invalid input; please try again." << std::endl;
         }
     } while (!valid);
@@ -46,11 +84,18 @@ std::string Contact::_getInput(std::string str) const {
     return input;
 }
 
+
+
 void    Contact::init(void) {
     this->_firstName = this->_getInput("Please enter first name: ");
     this->_lastName = this->_getInput("Please enter last name: ");
     this->_nickname = this->_getInput("Please enter nickname: ");
-    this->_phoneNumber = this->_getInput("Please enter phone number: ");
+	do
+	{
+		this->_phoneNumber = this->_getInput("Please enter phone number: ");
+		if(!IsValidPhoneNumber(this->_phoneNumber))
+			std::cout << "Invalid input; Phone number only allow numbers, and follow symbols: \"<space>+-()#*\"" << std::endl;
+	} while (!IsValidPhoneNumber(this->_phoneNumber));
     this->_darkestSecret = this->_getInput("Please enter darkest secret: ");
     std::cout << std::endl;
 }
@@ -154,6 +199,8 @@ bool    Contact::display(int index) const {
 	std::cout << "First Name\t: " << this->_firstName << std::endl;
     std::cout << "Last Name\t: " << this->_lastName << std::endl;
     std::cout << "Nickname\t: " << this->_nickname << std::endl;
+	std::cout << "Phone Number\t: " << this->_phoneNumber << std::endl;
+	std::cout << "Darkest Secret\t: " << this->_darkestSecret << std::endl;
     std::cout << std::endl;
 	
 	return true;

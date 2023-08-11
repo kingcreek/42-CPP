@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 06:11:20 by imurugar          #+#    #+#             */
-/*   Updated: 2023/08/06 03:06:24 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/08/11 00:29:06 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ int main(void) {
 		}
         std::cout << "> " << std::flush;
 		std::getline(std::cin, input);
+		if (std::cin.eof() == true)
+		{
+			std::cout << "\nCtrl + D? Ok, bye bye" << std::endl;
+            exit(0);
+        }
     }
     return 0;
 }

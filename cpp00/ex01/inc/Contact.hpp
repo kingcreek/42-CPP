@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 06:11:17 by imurugar          #+#    #+#             */
-/*   Updated: 2023/08/06 01:59:50 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/08/11 02:05:15 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <iostream>
 #include <sstream>
 #include <iomanip>
-#include <string>
+#include <cstdlib>
 
 class Contact
 {
@@ -29,6 +29,9 @@ private:
     int         _index;
 
     std::string _getInput(std::string str) const;
+	bool IsValidPhoneNumber(const std::string &phoneNumber) const;
+	bool IsSpanishCharacter(char c) const;
+	bool ContainsSpanishCharacters(const std::string &input) const;
 	size_t CountLengthWithMultibyte(const std::string& str) const;
 	std::string AdjustColumnWidth(const std::string& str, int colWidth) const;
 
