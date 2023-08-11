@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 06:11:15 by imurugar          #+#    #+#             */
-/*   Updated: 2023/08/11 02:10:46 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/08/11 02:20:30 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,10 +162,9 @@ std::string Contact::AdjustColumnWidth(const std::string& str, int colWidth) con
 		"aa"  -> 2 byte
 		"aañ" -> 4 byte
 
-		substr function need ammount of characters can be removed as second parameter, but are not safe to process non ASCII characters,
-		like utf-8 (ñ) or like:(😋 - 4 bytes), then if the imput have any multibyte character like "ñ" if we skip only 1, the output are wrong.
-		If we have 10 emojis and second parameters are 10, the result are a 2 emoji and strange simbol becouse the 3rd character are truncated in 2nd byte.
-		And we cant use wstring like in c++11/17 (*sad face*... sorry, in 4 bytes 😔 better), i improvise this to try manage non ASCII characters.
+		substr function want ammount of characters can be removed as second parameter, but are not safe to process non ASCII/ISO-8859-1 characters,
+		like utf-8 (ñ - 2 bytes) or like:(😋 - 4 bytes), then if the imput have any multibyte character like "ñ" if we skip only 1, the output are wrong.
+		And we cant use std::wstring or wchar_t like in c++11/17 (*sad face*... sorry, in 4 bytes 😔 better), i improvise this to try manage non ASCII characters.
 		*/
         return str.substr(0, i) + ".";
     }
