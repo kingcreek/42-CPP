@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 06:11:26 by imurugar          #+#    #+#             */
-/*   Updated: 2023/08/11 00:29:17 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/08/12 09:14:50 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,11 @@ int PhoneBook::_readInput() const {
         // Check correct conversion and wrong values/characters
         if (!iss.fail() && iss.eof() && input >= 0 && input <= 7)
             valid = true;
-        else
+        else {
             std::cout << "Invalid input. Please enter a valid index from 0 to 7." << std::endl;
+			std::cin.clear();
+            clearerr(stdin);
+		}
         
     } while (!valid);
     return input;

@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 06:11:17 by imurugar          #+#    #+#             */
-/*   Updated: 2023/08/11 02:05:15 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/08/12 09:17:09 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <sstream>
 #include <iomanip>
 #include <cstdlib>
+#include <stdio.h>
 
 class Contact
 {

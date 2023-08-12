@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 06:11:15 by imurugar          #+#    #+#             */
-/*   Updated: 2023/08/11 02:20:30 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/08/12 09:14:40 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ std::string Contact::_getInput(std::string str) const {
             valid = true;
         } else {
             std::cout << "Invalid input; please try again." << std::endl;
+			std::cin.clear();
+            clearerr(stdin);
         }
     } while (!valid);
 
@@ -178,7 +180,7 @@ void Contact::view(int index) const {
 
     int colWidth = 10;
     std::cout << "|" << std::setw(colWidth) << index << std::flush;
-	//example to prove wrong way
+	//example to prove wrong way in my opinion
 	//std::string a(this->_firstName.substr(0, 9) + ".");
 	//std::cout << "|" << std::setw(colWidth) << a << std::flush;
     std::cout << "|" << std::setw(colWidth) << AdjustColumnWidth(this->_firstName, colWidth) << std::flush;

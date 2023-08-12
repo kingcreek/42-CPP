@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 06:11:20 by imurugar          #+#    #+#             */
-/*   Updated: 2023/08/11 00:29:06 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/08/12 09:18:47 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,11 @@ int main(void) {
         else if (input.compare("SEARCH") == 0) {
             book.printContacts();
             book.search();
-        }else if(input.size() > 0){
+		} else if(input.size() > 0){
 			std::cout << "Come on, i know you can! The supported commands are:" << std::endl;
 			book.welcome(false);
+			std::cin.clear();
+            clearerr(stdin);
 		}
         std::cout << "> " << std::flush;
 		std::getline(std::cin, input);
