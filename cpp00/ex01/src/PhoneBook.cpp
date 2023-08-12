@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 06:11:26 by imurugar          #+#    #+#             */
-/*   Updated: 2023/08/12 09:14:50 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/08/12 09:42:58 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int PhoneBook::_readInput() const {
 		//Handle ctrl D
 		if (std::cin.eof() == true)
         {
-			std::cout << "\nCtrl + D? Ok, bye bye" << std::endl;
+			std::cout << "\nCtrl + D? Apoco si tilin. Bye tilin." << std::endl;
             exit(0);
         }
         // Check empty line
@@ -81,7 +81,6 @@ int PhoneBook::_readInput() const {
         else {
             std::cout << "Invalid input. Please enter a valid index from 0 to 7." << std::endl;
 			std::cin.clear();
-            clearerr(stdin);
 		}
         
     } while (!valid);

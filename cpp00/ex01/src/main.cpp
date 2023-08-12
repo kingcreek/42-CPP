@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 06:11:20 by imurugar          #+#    #+#             */
-/*   Updated: 2023/08/12 09:18:47 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/08/12 09:43:04 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int main(void) {
     std::string input = "";
     book.welcome(true);
     while (input.compare("EXIT")) {
+		std::cout << "> " << std::flush;
+		std::getline(std::cin, input);
         if (input.compare("ADD") == 0)
             book.addContact();
         else if (input.compare("SEARCH") == 0) {
@@ -28,13 +30,12 @@ int main(void) {
 			std::cin.clear();
             clearerr(stdin);
 		}
-        std::cout << "> " << std::flush;
-		std::getline(std::cin, input);
 		if (std::cin.eof() == true)
 		{
-			std::cout << "\nCtrl + D? Ok, bye bye" << std::endl;
+			std::cout << "\nCtrl + D? Apoco si tilin. Bye tilin." << std::endl;
             exit(0);
         }
+		std::cin.clear();
     }
     return 0;
 }

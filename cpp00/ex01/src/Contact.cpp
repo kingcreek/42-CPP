@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 06:11:15 by imurugar          #+#    #+#             */
-/*   Updated: 2023/08/12 09:14:40 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/08/12 09:43:11 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ std::string Contact::_getInput(std::string str) const {
         std::getline(std::cin, input);
 		if (std::cin.eof() == true)
         {
-			std::cout << "\nCtrl + D? Ok, bye bye" << std::endl;
+			std::cout << "\nCtrl + D? Apoco si tilin. Bye tilin." << std::endl;
             exit(0);
         }
 
@@ -79,7 +79,7 @@ std::string Contact::_getInput(std::string str) const {
         } else {
             std::cout << "Invalid input; please try again." << std::endl;
 			std::cin.clear();
-            clearerr(stdin);
+            //clearerr(stdin);
         }
     } while (!valid);
 
