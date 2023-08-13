@@ -17,8 +17,6 @@ int main(void) {
     std::string input = "";
     book.welcome(true);
     while (input.compare("EXIT")) {
-		std::cout << "> " << std::flush;
-		std::getline(std::cin, input);
         if (input.compare("ADD") == 0)
             book.addContact();
         else if (input.compare("SEARCH") == 0) {
@@ -30,6 +28,8 @@ int main(void) {
 			std::cin.clear();
             clearerr(stdin);
 		}
+        std::cout << "> " << std::flush;
+        std::getline(std::cin, input);
 		if (std::cin.eof() == true)
 		{
 			std::cout << "\nCtrl + D? Apoco si tilin. Bye tilin." << std::endl;

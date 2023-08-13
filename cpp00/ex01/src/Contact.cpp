@@ -31,7 +31,7 @@ bool Contact::IsValidPhoneNumber(const std::string &phoneNumber) const {
 }
 
 bool Contact::IsSpanishCharacter(char c) const {
-    const char *validChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZáéíóúÁÉÍÓÚñÑçÇ!\"#$%&'()*+,-./0123456789:;<=>?@[\\]^_`{|}~ ";
+    const char *validChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZáéíóúüÁÉÍÓÚÜñÑçÇ!\"#$%&'()*+,-./0123456789:;<=>?@[\\]^_`{|}~ ";
     for (const char *p = validChars; *p != '\0'; ++p) {
         if (*p == c) {
             return true;
