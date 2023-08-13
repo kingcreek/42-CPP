@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   NotSed.cpp                                         :+:      :+:    :+:   */
+/*   Replace.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 09:08:46 by imurugar          #+#    #+#             */
-/*   Updated: 2023/07/31 10:45:13 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/08/13 20:02:48 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "NotSed.hpp"
+#include "Replace.hpp"
 
-NotSed::NotSed(std::string file) : _infile(file)
+Replace::Replace(std::string file) : _infile(file)
 {
 	this->_outFile = this->_infile + ".replace";
 }
 
-NotSed::~NotSed(void){}
+Replace::~Replace(void){}
 
-void	NotSed::search_and_replace(std::string s1, std::string s2)
+void	Replace::search_and_replace(std::string s1, std::string s2)
 {
 	std::ifstream   ifs(this->_infile.c_str());
 	if(ifs.is_open())
@@ -33,7 +33,8 @@ void	NotSed::search_and_replace(std::string s1, std::string s2)
 			{
 				reading.erase(idx, s1.length());
 				reading.insert(idx, s2);
-				idx = reading.find(s1);
+				//start after insert to prevent infinite loop, ex: s1 = "o", s2 = "paco"
+				idx = reading.find(s1, idx + s2.length());
 			}
 			ofs << reading;
 			ofs.close();

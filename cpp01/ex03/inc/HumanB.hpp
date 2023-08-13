@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 12:13:07 by imurugar          #+#    #+#             */
-/*   Updated: 2023/07/31 08:46:03 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/08/13 17:56:55 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ class HumanB
 		HumanB(std::string name);
 		~HumanB(void);
 		
-		void attack(void) const;
-		bool	setWeapon(Weapon& newWeapon);
+		void	attack(void) const;
+		void	setWeapon(Weapon& newWeapon);
 	
 };
 

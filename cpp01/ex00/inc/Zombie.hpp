@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 09:54:38 by imurugar          #+#    #+#             */
-/*   Updated: 2023/07/29 10:47:17 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/08/13 13:36:25 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,12 @@ public:
 	~Zombie();
 
 	void	announce(void);
-	Zombie* newZombie(std::string name);
-	void	randomChump(std::string name);
 
 private:
 	std::string name;
 };
 
-Zombie  *newZombie(std::string name);
+Zombie* newZombie(std::string name);
 void	randomChump(std::string name);
 	
 #endif

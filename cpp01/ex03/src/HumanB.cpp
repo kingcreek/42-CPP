@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 12:13:13 by imurugar          #+#    #+#             */
-/*   Updated: 2023/07/31 08:50:41 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/08/13 18:03:59 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ HumanB::~HumanB( void )
 {
 }
 
-void	HumanB::attack( void ) const
+void HumanB::attack( void ) const
 {
 	if (this->weapon)
 		std::cout << this->name << " attacks with their " << this->weapon->getType() << std::endl;
@@ -30,13 +30,12 @@ void	HumanB::attack( void ) const
 		std::cout << this->name << " can't attack because they don't have a weapon" << std::endl;
 }
 
-bool	HumanB::setWeapon( Weapon& newWeapon )
+void HumanB::setWeapon( Weapon& newWeapon )
 {
-	if (newWeapon.getType() == "")
+	if (newWeapon.getType().empty())
 	{
 		std::cerr << "New weapon can't be nothing" << std::endl;
-		return (false);
+		return ;
 	}
 	this->weapon = &newWeapon;
-	return (true);
 }
