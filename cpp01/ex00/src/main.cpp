@@ -12,13 +12,6 @@
 
 #include "Zombie.hpp"
 
-/*
-Personalmente no me parece correcto que las funciones newZombie y randomChump hayan de ser
-globales para poder acceder a ellas ya que están directamente relacionadas con la clase
-Zombie, personalmente usaria static en ambas para que sean inherentes a ella.
-Hacer esto cambiaria el constructor a Zombie* Zombie::newZombie(std::string)
-lo cual no cumpliria con el subject... asi que... keep calm and dejalo así
-*/
 int main()
 {
 	{
