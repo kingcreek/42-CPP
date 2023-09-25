@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 16:44:30 by imurugar          #+#    #+#             */
-/*   Updated: 2023/08/02 17:03:29 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/09/25 16:23:11 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ScavTrap::attack(const std::string &target)
 		return ;
 	}
 	if (_hit_points <= 0) {
-		std::cout << "ScavTrap " << _name << " tries to attack, but we haven't implemented zombie attacks... yet" << std::endl;
+		std::cout << "ScavTrap " << _name << " tries to attack, but we haven't implemented zombie robots attacks... yet" << std::endl;
 		return ;
 	}
 	std::cout << "ScavTrap " << this->_name << " attacks " << target << ", causing " << this->_attack_damage << " points of damage!" << std::endl;

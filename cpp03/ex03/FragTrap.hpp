@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/31 12:18:50 by imurugar          #+#    #+#             */
-/*   Updated: 2023/09/13 09:32:14 by imurugar         ###   ########.fr       */
+/*   Created: 2023/09/25 16:08:07 by imurugar          #+#    #+#             */
+/*   Updated: 2023/09/25 16:08:08 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#ifndef FRAGTRAP_HPP
+#define FRAGTRAP_HPP
 
-int main( void ) {
-	Fixed a;
-	a.setRawBits(1.5);
-	Fixed b( a );
-	Fixed c;
-	b.setRawBits(3);
-	c = b;
-	b.setRawBits(2);
-	std::cout << a.getRawBits() << std::endl;
-	std::cout << b.getRawBits() << std::endl;
-	std::cout << c.getRawBits() << std::endl;
-	return 0;
-}
+#include "ClapTrap.hpp"
+
+class FragTrap : virtual public ClapTrap
+{
+private:
+    FragTrap();
+
+public:
+    FragTrap(std::string name);
+    ~FragTrap();
+
+    void    highFive( void );
+};
+
+#endif // FRAGTRAP_HPP

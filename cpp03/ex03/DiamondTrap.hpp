@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/31 12:18:50 by imurugar          #+#    #+#             */
-/*   Updated: 2023/09/13 09:32:14 by imurugar         ###   ########.fr       */
+/*   Created: 2023/09/25 16:07:59 by imurugar          #+#    #+#             */
+/*   Updated: 2023/09/25 16:08:01 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#ifndef DIAMONDTRAP_HPP
+#define DIAMONDTRAP_HPP
 
-int main( void ) {
-	Fixed a;
-	a.setRawBits(1.5);
-	Fixed b( a );
-	Fixed c;
-	b.setRawBits(3);
-	c = b;
-	b.setRawBits(2);
-	std::cout << a.getRawBits() << std::endl;
-	std::cout << b.getRawBits() << std::endl;
-	std::cout << c.getRawBits() << std::endl;
-	return 0;
-}
+#include "FragTrap.hpp"
+#include "ScavTrap.hpp"
+
+class DiamondTrap : public FragTrap, public ScavTrap
+{
+private:
+    std::string _name;
+
+public:
+    DiamondTrap( std::string name );
+    ~DiamondTrap();
+
+    using   ScavTrap::attack;
+    void    whoAmI( void );
+};
+
+#endif // DIAMONDTRAP_HPP

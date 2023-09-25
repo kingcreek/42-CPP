@@ -5,23 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/31 12:18:50 by imurugar          #+#    #+#             */
-/*   Updated: 2023/09/13 09:32:14 by imurugar         ###   ########.fr       */
+/*   Created: 2023/09/25 16:08:13 by imurugar          #+#    #+#             */
+/*   Updated: 2023/09/25 16:08:14 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "FragTrap.hpp"
 
-int main( void ) {
-	Fixed a;
-	a.setRawBits(1.5);
-	Fixed b( a );
-	Fixed c;
-	b.setRawBits(3);
-	c = b;
-	b.setRawBits(2);
-	std::cout << a.getRawBits() << std::endl;
-	std::cout << b.getRawBits() << std::endl;
-	std::cout << c.getRawBits() << std::endl;
-	return 0;
+#include "DiamondTrap.hpp"
+
+int main( void )
+{
+    DiamondTrap ash( "Ash" );
+    DiamondTrap ash2( ash );
+    DiamondTrap ash3(".");
+
+    ash.whoAmI();
+    ash2.whoAmI();
+    ash3 = ash;
+    ash3.whoAmI();
+
+    ash.attack( "the air" );
+    ash.takeDamage( 10 );
+    ash.beRepaired( 10 );
+
+    return EXIT_SUCCESS;
 }

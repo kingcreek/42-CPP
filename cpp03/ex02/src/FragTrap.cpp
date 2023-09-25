@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 12:33:55 by imurugar          #+#    #+#             */
-/*   Updated: 2023/08/02 16:24:33 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/09/25 16:25:24 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ FragTrap::FragTrap(std::string name): ClapTrap(name)
 	std::cout << "FragTrap Constructor for the name " << this->_name << " called" << std::endl;
 }
 
-// Deconstructors
 FragTrap::~FragTrap()
 {
 	std::cout << "FragTrap Deconstructor for " << this->_name << " called" << std::endl;

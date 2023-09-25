@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 11:37:17 by imurugar          #+#    #+#             */
-/*   Updated: 2023/08/02 16:53:52 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/09/25 16:23:04 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,20 +49,3 @@ int main()
 		std::cout << "\033[34mDeconstructing\033[0m" << std::endl;
 	}
 }
-/*  highFivesGuys
-int main()
-{
-	ClapTrap war1("Dwayne Johnson");
-	ClapTrap war2("Chuck Norris");
-	
-	war1.attack("Chuck Norris");
-	war2.takeDamage(0);
-	war2.beRepaired(100000);
-    
-	war2.attack("Dwayne Johnson");
-	war2.takeDamage(0);
-	war2.beRepaired(1);
-	
-    return 0;
-}
-*/
