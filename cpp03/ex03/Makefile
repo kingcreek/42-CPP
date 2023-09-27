@@ -5,55 +5,83 @@
 #                                                     +:+ +:+         +:+      #
 #    By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/09/25 16:08:17 by imurugar          #+#    #+#              #
-#    Updated: 2023/09/25 16:08:18 by imurugar         ###   ########.fr        #
+#    Created: 2023/04/24 09:01:45 by imurugar          #+#    #+#              #
+#    Updated: 2023/04/24 09:01:45 by imurugar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= diamondtrap
-	
-CC			= c++
-FLAGS		= -Wall -Wextra -Werror -std=c++98 -Wshadow -Wno-shadow
-RM			= rm -rf
 
-OBJDIR = .objFiles
+# SIMPLE ===================================================================================
+NAME = War
+# ==========================================================================================
 
-FILES		= main ClapTrap ScavTrap FragTrap DiamondTrap
+# SRCS =====================================================================================
+SRCS_DIR = src/
+SRCS =	main.cpp \
+		ClapTrap.cpp \
+		ScavTrap.cpp \
+		FragTrap.cpp \
+		DiamondTrap.cpp
+# ==========================================================================================
 
-SRC			= $(FILES:=.cpp)
-OBJ			= $(addprefix $(OBJDIR)/, $(FILES:=.o))
-HEADER		= ClapTrap.hpp ScavTrap.hpp FragTrap.hpp DiamondTrap.hpp
+# INCLUDES =================================================================================
+INCS_DIR = inc/
+INCLUDE = -I$(INCS_DIR)
+# ==========================================================================================
 
-#Colors:
+# DEPEDENCIES ==============================================================================
+DEPS = $(INCS_DIR)/
+# ==========================================================================================
+
+# FLAGS ====================================================================================
+DEBUG = -g -fsanitize=address
+FLAGS = $(DEBUG) -std=c++98 -pedantic -Wall -Wextra -Werror $(INCLUDE)
+# ==========================================================================================
+
+# UTILS ====================================================================================
+CC		= c++ #clang++
+RM		= rm -rf
+# ==========================================================================================
+
+# OBJS =====================================================================================
+OBJS_DIR 	= 	objects/
+OBJ 		= 	$(SRCS:.cpp=.o)
+OBJS 		= 	$(addprefix $(OBJS_DIR), $(OBJ))
+# ==========================================================================================
+
+# COLORS  ==================================================================================
 GREEN		=	\e[92;5;118m
 YELLOW		=	\e[93;5;226m
 GRAY		=	\e[33;2;37m
 RESET		=	\e[0m
 CURSIVE		=	\e[33;3m
+# ==========================================================================================
 
-#Debug 
-ifeq ($(DEBUG), 1)
-   OPTS = -g
-endif
-
-.PHONY: all clean fclean re
+# FROM SUBJECT =============================================================================
+$(OBJS_DIR)%.o :	$(SRCS_DIR)%.cpp
+	@mkdir -p $(OBJS_DIR)
+	@printf "$(GREEN)    - Compiling $(GRAY)$<$(RESET)\n"
+	@$(CC) $(FLAGS) -c $< -o $@
+	
+$(NAME): $(OBJS)
+	@$(CC)  $(FLAGS) -o $(NAME) $(OBJS)
+	@printf "$(GREEN)    - Executable ready.\n$(RESET)"
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(HEADER)
-	@$(CC) $(OBJ) $(OPTS) -o $(NAME)
-	@printf "$(_SUCCESS) $(GREEN)- Executable ready.\n$(RESET)"
-
-$(OBJDIR)/%.o: %.cpp $(HEADER)
-	@mkdir -p $(dir $@)
-	@$(CC) $(FLAGS) $(OPTS) -c $< -o $@
-
 clean:
-	@$(RM) $(OBJDIR) $(OBJ)
-	@printf "$(YELLOW)    - Object files removed.$(RESET)\n"
+	@$(RM) $(OBJS_DIR)
 
 fclean: clean
 	@$(RM) $(NAME)
 	@printf "$(YELLOW)    - Executable removed.$(RESET)\n"
 
 re: fclean all
+# ==========================================================================================
+
+# SUP ======================================================================================
+check: $(NAME)
+	./$(NAME)
+# ==========================================================================================
+
+.PHONY: all clean fclean re

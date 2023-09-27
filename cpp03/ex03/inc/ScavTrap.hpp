@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/25 16:08:07 by imurugar          #+#    #+#             */
-/*   Updated: 2023/09/25 16:08:08 by imurugar         ###   ########.fr       */
+/*   Created: 2023/08/02 16:44:25 by imurugar          #+#    #+#             */
+/*   Updated: 2023/09/27 02:25:01 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRAGTRAP_HPP
-#define FRAGTRAP_HPP
 
+// Header-protection
+#pragma once
+
+// Includes
 #include "ClapTrap.hpp"
 
-class FragTrap : virtual public ClapTrap
+// classes
+
+class ScavTrap: virtual public ClapTrap
 {
-private:
-    FragTrap();
+	private:
+		bool _guarding_gate;
+		
+	public:
+		ScavTrap(void);
+		ScavTrap(const ScavTrap &copy);
+		ScavTrap(std::string name);
 
-public:
-    FragTrap(std::string name);
-    ~FragTrap();
+		virtual ~ScavTrap();
 
-    void    highFive( void );
+		ScavTrap &operator=(const ScavTrap &src);
+
+		void attack(const std::string &target);
+		void guardGate(void);
+
 };
-
-#endif // FRAGTRAP_HPP
