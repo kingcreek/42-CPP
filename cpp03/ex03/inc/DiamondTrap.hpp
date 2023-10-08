@@ -6,20 +6,19 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 00:37:31 by imurugar          #+#    #+#             */
-/*   Updated: 2023/09/27 15:04:36 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/10/08 10:34:17 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DIAMONDTRAP_HPP
-# define DIAMONDTRAP_HPP
+#define DIAMONDTRAP_HPP
 
-# include <string>
-# include "FragTrap.hpp"
-# include "ScavTrap.hpp"
+#include "FragTrap.hpp"
+#include "ScavTrap.hpp"
 
-class DiamondTrap : public FragTrap, public ScavTrap {
+class DiamondTrap : public FragTrap, public ScavTrap 
+{
 	public:
-		DiamondTrap(void);
 		DiamondTrap(std::string name);
 		DiamondTrap(const DiamondTrap &original);
 		DiamondTrap &operator=(const DiamondTrap &original);
@@ -29,7 +28,7 @@ class DiamondTrap : public FragTrap, public ScavTrap {
 		void whoAmI(void);
 
 	private:
-		std::string name;
+		std::string _name;
 };
 
 #endif

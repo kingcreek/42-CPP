@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 11:37:28 by imurugar          #+#    #+#             */
-/*   Updated: 2023/09/27 02:31:35 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/10/08 10:34:14 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ class ClapTrap
 	
 
 	public:
-		ClapTrap(void);
 		ClapTrap(const std::string name);
 		~ClapTrap();
 		ClapTrap(const ClapTrap& other);

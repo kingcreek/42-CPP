@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 12:34:13 by imurugar          #+#    #+#             */
-/*   Updated: 2023/09/27 02:24:39 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/10/08 10:34:21 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ class FragTrap : virtual public ClapTrap
 {
 	
 	public:
-		FragTrap(void);
 		FragTrap(std::string name);
 		FragTrap(FragTrap const & rhs);
 		FragTrap & operator=(FragTrap const & rhs);

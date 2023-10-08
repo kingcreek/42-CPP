@@ -6,23 +6,20 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 16:44:25 by imurugar          #+#    #+#             */
-/*   Updated: 2023/08/02 16:46:47 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/10/08 10:06:08 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef SCAVTRAP_HPP
+#define SCAVTRAP_HPP
 
-// Header-protection
-#pragma once
-
-// Includes
 #include "ClapTrap.hpp"
-
-// classes
 
 class ScavTrap: public ClapTrap
 {
 	private:
 		bool _guarding_gate;
+		
 	public:
 		ScavTrap(const ScavTrap &copy);
 		ScavTrap(std::string name);
@@ -35,3 +32,5 @@ class ScavTrap: public ClapTrap
 		void guardGate(void);
 
 };
+
+#endif

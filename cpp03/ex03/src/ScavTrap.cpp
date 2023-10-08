@@ -6,13 +6,11 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 16:44:30 by imurugar          #+#    #+#             */
-/*   Updated: 2023/09/27 02:34:18 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/10/08 10:34:09 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
-
-ScavTrap::ScavTrap(void){}
 
 ScavTrap::ScavTrap(const ScavTrap &copy): ClapTrap(copy)
 {

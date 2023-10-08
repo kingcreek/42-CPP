@@ -6,13 +6,11 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 12:33:55 by imurugar          #+#    #+#             */
-/*   Updated: 2023/09/27 02:34:22 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/10/08 10:34:02 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
-
-FragTrap::FragTrap(void) : ClapTrap(){}
 
 FragTrap::FragTrap(const FragTrap &copy): ClapTrap(copy)
 {

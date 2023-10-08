@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 12:34:13 by imurugar          #+#    #+#             */
-/*   Updated: 2023/08/02 17:05:49 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/10/08 10:00:04 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 #include "ClapTrap.hpp"
 
-class FragTrap : public ClapTrap{
+class FragTrap : public ClapTrap
+{
 	
 	public:
 		FragTrap(std::string name);

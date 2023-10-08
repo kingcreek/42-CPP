@@ -6,11 +6,12 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 16:44:25 by imurugar          #+#    #+#             */
-/*   Updated: 2023/09/25 16:23:13 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/10/08 10:05:54 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef SCAVTRAP_HPP
+#define SCAVTRAP_HPP
 
 #include "ClapTrap.hpp"
 
@@ -18,6 +19,7 @@ class ScavTrap: public ClapTrap
 {
 	private:
 		bool _guarding_gate;
+		
 	public:
 		ScavTrap(const ScavTrap &copy);
 		ScavTrap(std::string name);
@@ -29,3 +31,5 @@ class ScavTrap: public ClapTrap
 		void attack(const std::string &target);
 		void guardGate(void);
 };
+
+#endif

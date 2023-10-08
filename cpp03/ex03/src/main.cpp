@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 11:37:17 by imurugar          #+#    #+#             */
-/*   Updated: 2023/09/27 02:38:45 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/10/08 10:27:42 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@ int main()
 		std::string diamondTrapName = "DT-XXY";
 		std::string scavTrapName = "SCVT-2000";
 		std::string clapTrapName = "CT-42";
-
+		
+		std::cout << "\033[34mConstructing\033[0m" << std::endl;
 		DiamondTrap diamondTrap(diamondTrapName);
 		ScavTrap scavTrap(scavTrapName);
 		ClapTrap clapTrap(clapTrapName);
-
+		
+		std::cout << "\033[34mTesting\033[0m" << std::endl;
 		diamondTrap.whoAmI();
 		clapTrap.attack(scavTrapName);
 		scavTrap.takeDamage(0);
@@ -36,6 +38,8 @@ int main()
 		diamondTrap.takeDamage(5000);
 		diamondTrap.beRepaired(5000);
 		diamondTrap.whoAmI();
+
+		std::cout << "\033[34mDeconstructing\033[0m" << std::endl;
 	}
 
 	return (0);
