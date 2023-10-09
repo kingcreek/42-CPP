@@ -1,33 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   AAnimal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/03 09:09:05 by imurugar          #+#    #+#             */
-/*   Updated: 2023/10/09 11:08:46 by imurugar         ###   ########.fr       */
+/*   Created: 2023/08/03 09:08:21 by imurugar          #+#    #+#             */
+/*   Updated: 2023/10/09 12:21:07 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-#define DOG_HPP
+#ifndef AANIMAL_HPP
+#define AANIMAL_HPP
+
 
 #include <string>
 #include <iostream>
-#include "Animal.hpp"
+#include "Brain.hpp"
 
-class Dog: public Animal
-{
+class AAnimal
+{	
 	public:
-		Dog(void);
-		Dog(const Dog& cpy);
-		Dog& operator=(const Dog& cpy);
-		~Dog();
+		// AAnimal(void);
+		// AAnimal(const AAnimal& cpy);
+		// AAnimal& operator=(const AAnimal& cpy);
+		virtual ~AAnimal();
 		
-		void makeSound(void) const;
+		std::string const& getType(void) const;
+		virtual void makeSound() const;
+		//virtual void makeSound() const = 0; //make abstract class
 
-	
+	protected:
+		AAnimal(void);
+		AAnimal(const AAnimal& cpy);
+		AAnimal& operator=(const AAnimal& cpy);
+		std::string _type;
+		
 };
 
 #endif

@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/03 09:09:05 by imurugar          #+#    #+#             */
-/*   Updated: 2023/10/09 11:08:46 by imurugar         ###   ########.fr       */
+/*   Created: 2023/10/09 11:09:40 by imurugar          #+#    #+#             */
+/*   Updated: 2023/10/09 11:30:11 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-#define DOG_HPP
+#ifndef BRAIN_HPP
+#define BRAIN_HPP
 
-#include <string>
 #include <iostream>
-#include "Animal.hpp"
 
-class Dog: public Animal
+class Brain
 {
-	public:
-		Dog(void);
-		Dog(const Dog& cpy);
-		Dog& operator=(const Dog& cpy);
-		~Dog();
+	private:
+		std::string _ideas[100];
 		
-		void makeSound(void) const;
-
+	public:
+		Brain(void);
+		Brain(const Brain& cpy);
+		~Brain();
+		Brain& operator=(const Brain& cpy);
 	
 };
 

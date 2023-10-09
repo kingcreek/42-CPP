@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 09:09:05 by imurugar          #+#    #+#             */
-/*   Updated: 2023/10/09 11:08:46 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/10/09 12:24:55 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 #include <string>
 #include <iostream>
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 
-class Dog: public Animal
+class Dog: public AAnimal
 {
 	public:
 		Dog(void);
@@ -27,6 +27,8 @@ class Dog: public Animal
 		
 		void makeSound(void) const;
 
+	private:
+		Brain* _brain;
 	
 };
 

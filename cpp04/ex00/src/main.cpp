@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 17:42:39 by imurugar          #+#    #+#             */
-/*   Updated: 2023/08/03 10:04:08 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/10/09 11:04:01 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,117 +18,37 @@
 #include <string>
 #include <iostream>
 
-void	testWrong(void)
+int main( void )
 {
-	std::cout << "--- Wrong Animal/Cat tests" << std::endl;
-	{
-		std::cout << "-- WrongAnimal" << std::endl;
-		const WrongAnimal *	animal = new WrongAnimal();
-		std::cout << "WrongAnimal type: " << animal->getType() << std::endl;
-		animal->makeSound();
-		delete animal;
-		std::cout << std::endl;
-	}
-	{
-		std::cout << "-- WrongCat by WrongCat class" << std::endl;
-		const WrongCat *	cat = new WrongCat();
-		std::cout << "WrongCat type: " << cat->getType() << std::endl;
-		cat->makeSound();
-		delete cat;
-		std::cout << std::endl;
-	}
-	{
-		std::cout << "-- WrongCat by WrongAnimal parent class" << std::endl;
-		const WrongAnimal * cat = new WrongCat();
-		std::cout << "WrongAnimal type: " << cat->getType() << std::endl;
-		cat->makeSound();
-		delete cat;
-		std::cout << std::endl;
-	}
-	// { //SHOULD NOT COMPILE
-	// 	const WrongCat * cat = new WrongAnimal();
-	// 	cat->makeSound();
-	// 	delete cat;
-	// }
-}
+    std::cout << "--------------- Animal ---------------" << std::endl;
 
-void	testCorrect(void)
-{
-	std::cout << "--- Correct Animal Cat Dog tests" << std::endl;
-	{
-		std::cout << "-- Animal" << std::endl;
-		const Animal *	animal = new Animal();
-		std::cout << "Animal type: " << animal->getType() << std::endl;
-		animal->makeSound();
-		delete animal;
-		std::cout << std::endl;
-	}
-	{
-		std::cout << "-- Cat by cat class" << std::endl;
-		const Cat *	cat = new Cat();
-		std::cout << "Cat type: " << cat->getType() << std::endl;
-		cat->makeSound();
-		delete cat;
-		std::cout << std::endl;
-	}
-	{
-		std::cout << "-- Cat by animal parent class" << std::endl;
-		const Animal * cat = new Cat();
-		std::cout << "Animal type: " << cat->getType() << std::endl;
-		cat->makeSound();
-		delete cat;
-		std::cout << std::endl;
-	}
-	// { //SHOULD NOT COMPILE
-	// 	const Cat * cat = new Animal();
-	// 	cat->makeSound();
-	// 	delete cat;
-	// }
-	{
-		std::cout << "-- Dog by dog class" << std::endl;
-		const Dog *	dog = new Dog();
-		std::cout << "Dog type: " << dog->getType() << std::endl;
-		dog->makeSound();
-		delete dog;
-		std::cout << std::endl;
-	}
-	{
-		std::cout << "-- Dog by animal parent class" << std::endl;
-		const Animal * dog = new Dog();
-		std::cout << "Animal type: " << dog->getType() << std::endl;
-		dog->makeSound();
-		delete dog;
-		std::cout << std::endl;
-	}
-	// { //SHOULD NOT COMPILE
-	// 	const Dog * dog = new Animal();
-	// 	dog->makeSound();
-	// 	delete dog;
-	// }
-}
-
-void	testSubject(void)
-{
-	std::cout << "--- Subject tests" << std::endl;
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
+    const Animal* meta = new Animal();
+    const Animal* j = new Dog();
+    const Animal* i = new Cat();
 	
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
+	std::cout << "Animal Type: " << meta->getType() << std::endl;
+    std::cout << "Dog type: " << j->getType() << std::endl;
+    std::cout << "Cat Type: " << i->getType() << std::endl;
+    i->makeSound();
 	j->makeSound();
-	meta->makeSound();
-	delete j;
-	delete i;
-	delete meta;
-	std::cout << std::endl;
-}
+    meta->makeSound();
 
-int	main(void)
-{
-	testWrong();
-	testCorrect();
-	testSubject();
-	return (0);
+    delete  meta;
+    delete  j;
+    delete  i;
+
+    std::cout << std::endl << "------------- Wrong Animal -------------" << std::endl;
+
+    const WrongAnimal *wrong = new WrongAnimal();
+    const WrongAnimal *wrongCat = new WrongCat();
+	
+    std::cout << "Wrong Type: " << wrong->getType() << " " << std::endl;
+    std::cout << "WrongCat Type: " << wrongCat->getType() << " " << std::endl;
+    wrong->makeSound();
+    wrongCat->makeSound();
+
+    delete  wrong;
+    delete  wrongCat;
+
+    return 0;
 }

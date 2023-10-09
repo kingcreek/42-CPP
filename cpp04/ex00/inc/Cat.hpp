@@ -6,11 +6,12 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 09:08:24 by imurugar          #+#    #+#             */
-/*   Updated: 2023/08/03 09:57:51 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/10/09 11:07:35 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef CAT_HPP
+#define CAT_HPP
 
 #include <string>
 #include <iostream>
@@ -18,11 +19,8 @@
 
 class Cat: public Animal
 {
-	
-	private:
-	
 	public:
-		Cat();
+		Cat(void);
 		Cat(const Cat& cpy);
 		Cat& operator=(const Cat& cpy);
 		~Cat();
@@ -31,3 +29,5 @@ class Cat: public Animal
 
 	
 };
+
+#endif
