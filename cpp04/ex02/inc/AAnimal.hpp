@@ -28,7 +28,7 @@ class AAnimal
 		
 		std::string const& getType(void) const;
 		virtual void makeSound() const;
-		//virtual void makeSound() const = 0; //make abstract class
+		//virtual void makeSound() const = 0; //pute virtual, make abstract class
 
 	protected:
 		AAnimal(void);
