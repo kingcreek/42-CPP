@@ -6,17 +6,16 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 10:49:28 by imurugar          #+#    #+#             */
-/*   Updated: 2023/08/13 16:54:38 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/08/15 19:33:20 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie::Zombie(void) {
-}
+Zombie::Zombie(void) {}
 
 Zombie::~Zombie(void) {
-    std::cout << "Zombie " << this->_name << " has been destroyed." << std::endl;
+    std::cout << "Zombie: " << this->_name << " has been destroyed." << std::endl;
 }
 
 void    Zombie::announce(void) {

@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 10:54:05 by imurugar          #+#    #+#             */
-/*   Updated: 2023/08/13 16:53:55 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/09/04 10:30:43 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #define ZOMBIE_HPP
 
 #include <iostream>
-#include <sstream>
 
 class Zombie
 {

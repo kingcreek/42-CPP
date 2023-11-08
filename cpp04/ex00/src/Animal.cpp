@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 09:03:12 by imurugar          #+#    #+#             */
-/*   Updated: 2023/10/09 10:59:24 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/10/17 16:43:18 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,3 @@ std::string const& Animal::getType() const {
 void Animal::makeSound() const {
     std::cout << "No hay ningún tipo de sonido..." << std::endl;
 }
-		

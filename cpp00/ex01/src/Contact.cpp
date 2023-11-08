@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 06:11:15 by imurugar          #+#    #+#             */
-/*   Updated: 2023/08/12 09:43:11 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/08/12 14:40:25 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,16 @@ bool Contact::IsValidPhoneNumber(const std::string &phoneNumber) const {
 }
 
 bool Contact::IsSpanishCharacter(char c) const {
-    const char *validChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZáéíóúüÁÉÍÓÚÜñÑçÇ!\"#$%&'()*+,-./0123456789:;<=>?@[\\]^_`{|}~ ";
+    const char *validChars = "üÜabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZáéíóúÁÉÍÓÚñÑçÇ!\"#$%&'()*+,-./0123456789:;<=>?@[\\]^_`{|}~ ";
     for (const char *p = validChars; *p != '\0'; ++p) {
         if (*p == c) {
             return true;
         }
     }
+	/*
+	if (!iscntrl(c))
+		return true;
+	*/
     return false;
 }
 

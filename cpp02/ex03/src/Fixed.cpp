@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 12:19:41 by imurugar          #+#    #+#             */
-/*   Updated: 2023/08/21 21:52:48 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/09/19 18:42:30 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ Fixed::Fixed() {
     this->_fixedPointValue = 0;
 }
 
-Fixed::Fixed( const Fixed &rhs ): _fixedPointValue(rhs._fixedPointValue) {
+Fixed::Fixed( const Fixed &rhs ) {
     //std::cout << "Copy constructor called" << std::endl;
     // this->setRawBits(rhs.getRawBits());
-    //*this = rhs;
+    *this = rhs;
 }
 
 Fixed::Fixed( const int n ) : _fixedPointValue( n << _fractionalBits ) {
@@ -29,6 +29,10 @@ Fixed::Fixed( const int n ) : _fixedPointValue( n << _fractionalBits ) {
 
 Fixed::Fixed( const float n ) : _fixedPointValue( roundf( n * ( 1 << _fractionalBits ) ) ) {
     //std::cout << "Float constructor called" << std::endl;
+	/*
+	Example: n = 3.75
+	
+	*/
 }
 
 Fixed::~Fixed() {
@@ -154,4 +158,3 @@ const Fixed& Fixed::max( const Fixed &a, const Fixed &b ) {
         return a;
     return b;
 }
-

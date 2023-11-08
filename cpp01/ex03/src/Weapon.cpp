@@ -6,14 +6,14 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 12:13:17 by imurugar          #+#    #+#             */
-/*   Updated: 2023/08/13 18:03:51 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/08/14 15:58:43 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Weapon.hpp"
 
-Weapon::Weapon( std::string type ): type(type) {}
+Weapon::Weapon( std::string type ) : type(type) {}
 
 Weapon::~Weapon( void ) {}
 

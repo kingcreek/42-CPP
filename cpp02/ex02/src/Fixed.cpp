@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 12:19:41 by imurugar          #+#    #+#             */
-/*   Updated: 2023/09/15 12:27:25 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:46:49 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ bool Fixed::operator!=(const Fixed& rhs) const {
     return this->_fixedPointValue != rhs._fixedPointValue;
 }
 
+// Arithmetic operators
 Fixed Fixed::operator+(const Fixed& rhs) const {
     return Fixed(this->toFloat() + rhs.toFloat());
 }
@@ -105,6 +106,7 @@ Fixed Fixed::operator/(const Fixed& rhs) const {
 }
 
 // Pre and post increment/decreased
+
 Fixed&   Fixed::operator++( void ) {
     ++this->_fixedPointValue;
     return *this;
@@ -141,14 +143,6 @@ const Fixed& Fixed::min( const Fixed &a, const Fixed &b ) {
     return b;
 }
 
-/*
-template <typename T>
-T Fixed::max(T a, T b) {
-    if (a.getRawBits() > b.getRawBits())
-        return a;
-    return b;
-}
-*/
 Fixed& Fixed::max( Fixed &a, Fixed &b ) {
     if ( a.getRawBits() > b.getRawBits() )
         return a;
@@ -160,4 +154,3 @@ const Fixed& Fixed::max( const Fixed &a, const Fixed &b ) {
         return a;
     return b;
 }
-

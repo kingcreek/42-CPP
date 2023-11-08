@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 12:19:41 by imurugar          #+#    #+#             */
-/*   Updated: 2023/08/21 21:49:42 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:43:27 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ Fixed::Fixed() : _fixedPointValue(0) {
 
 Fixed::Fixed( const Fixed &rhs ) : _fixedPointValue(rhs._fixedPointValue){
     std::cout << "Copy constructor called" << std::endl;
+	//*this = rhs;
+	//this->_fixedPointValue = rhs._fixedPointValue;
 }
 
 Fixed& Fixed::operator=( const Fixed &rhs ) {

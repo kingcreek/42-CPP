@@ -41,4 +41,3 @@ std::string const& AAnimal::getType() const {
 void AAnimal::makeSound() const {
     std::cout << "No hay ningún tipo de sonido..." << std::endl;
 }
-		

@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 11:00:40 by imurugar          #+#    #+#             */
-/*   Updated: 2023/08/13 20:36:15 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/09/05 15:23:24 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void Harl::error( void )
 
 void Harl::complain(std::string level)
 {
-	
 	void (Harl::*logCatLevels[])() = {
         &Harl::debug,
         &Harl::info,
@@ -62,5 +61,6 @@ void Harl::complain(std::string level)
 		}
 	}
 	if(level != "EXIT")
-		std::cout << "[ 🥺 Probably complaining about insignificant problems 🥺 ]" << std::endl;
+		std::cout << "[ 🥺 Harl have several problems to understand this command 🥺 ]" << std::endl;
+		std::cout << std::endl;
 }

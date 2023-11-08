@@ -21,19 +21,15 @@
 class AAnimal
 {	
 	public:
-		// AAnimal(void);
-		// AAnimal(const AAnimal& cpy);
-		// AAnimal& operator=(const AAnimal& cpy);
-		virtual ~AAnimal();
-		
-		std::string const& getType(void) const;
-		virtual void makeSound() const;
-		//virtual void makeSound() const = 0; //pute virtual, make abstract class
-
-	protected:
 		AAnimal(void);
 		AAnimal(const AAnimal& cpy);
 		AAnimal& operator=(const AAnimal& cpy);
+		virtual ~AAnimal();
+		
+		std::string const& getType(void) const;
+		virtual void makeSound() const = 0; //pure virtual, make abstract class
+
+	protected:
 		std::string _type;
 		
 };

@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 11:00:40 by imurugar          #+#    #+#             */
-/*   Updated: 2023/08/13 20:35:36 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/09/05 15:23:37 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,6 @@ void Harl::complain( std::string level )
         	this->error();
         	break ;
     	default:
-        	std::cout << "[ 🥺 Probably complaining about insignificant problems 🥺 ]" << std::endl;
+        	std::cout << "[ 🥺 Harl have several problems to understand this command 🥺 ]" << std::endl;
 	}
 }
