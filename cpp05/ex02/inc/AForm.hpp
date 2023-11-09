@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:39:59 by imurugar          #+#    #+#             */
-/*   Updated: 2023/11/07 23:49:26 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:41:49 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,26 @@ class AForm
 		bool				_signed;
 		const int			_requiredGradeSign;
 		const int			_requiredGradeExec;
+		const std::string	_target;
 		
 	public:
 		AForm(const std::string& name, int requiredGradeSign, int requiredGradeExec);
     	AForm(const AForm& src);
-		~AForm();
+		virtual ~AForm();
 		AForm& operator=(const AForm& src);
 
 		// Getters
-		std::string	getName() const;
-		bool		isSigned();
-		int 		getGradeSign();
-		int 		getGradeExec();
+		const std::string	getName() const;
+		bool				isSigned() const;
+		int 				getGradeSign() const;
+		int 				getGradeExec() const;
+		const std::string&	getTarget(void) const;
 
 		// Functions
 		void			beSigned(Bureaucrat&);
 		virtual void	execute(Bureaucrat const & executor) const = 0;
+		void			setTarget(const std::string &target) const;
+		void			setSign(bool);
 
 		// Exceptions
 		class GradeTooHighException : public std::exception {
@@ -53,6 +57,10 @@ class AForm
 		class FormAlreadySignedException : public std::exception {
 			public:
 				virtual const char* what() const throw() { return "AForm::AFormAlreadySignedException: AForm already signed"; }
+		};
+		class FormNotSignedException : public std::exception {
+			public:
+				virtual const char* what() const throw() { return "AForm::FormNotSignedException: AForm already signed"; }
 		};
 };
 

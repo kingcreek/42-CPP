@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 07:26:57 by imurugar          #+#    #+#             */
-/*   Updated: 2023/11/07 23:41:59 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:44:33 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& src) {
 	return *this;
 }
 
-const std::string Bureaucrat::getName() {
+const std::string Bureaucrat::getName() const {
 	return this->_name;
 }
 
-int Bureaucrat::getGrade() {
+int Bureaucrat::getGrade() const {
 	return this->_grade;
 }
 
@@ -79,4 +79,22 @@ void Bureaucrat::signForm(AForm& src) {
 		return;	
 	}
 	std::cout << this->getName() << " signed " << src.getName() << std::endl;
+}
+
+void Bureaucrat::executeForm(AForm const& form) {
+	try {
+		form.execute(*this);
+	}
+	catch (AForm::GradeTooLowException& e) {
+		std::cout << this->getName() << " couldnt execute form " << form.getName();
+		std::cout << " (reason: " << e.what() << ")" << std::endl;
+		return;
+	}
+	catch (AForm::FormNotSignedException& e) {
+		std::cout << this->getName() << " couldn't sign form " << form.getName();
+		std::cout << " (reason: " << e.what() << ")" << std::endl;
+		return;
+	}
+	
+	std::cout << this->getName() << " executed " << form.getName() << std::endl;
 }

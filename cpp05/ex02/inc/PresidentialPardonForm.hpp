@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 23:49:44 by imurugar          #+#    #+#             */
-/*   Updated: 2023/11/08 15:49:59 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:17:52 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@
 
 class PresidentialPardonForm: public AForm
 {
-	private:
-		std::string _target;
-		PresidentialPardonForm(void);
+		
 	public:
 		PresidentialPardonForm(std::string target);
 		PresidentialPardonForm(PresidentialPardonForm const & rhs);

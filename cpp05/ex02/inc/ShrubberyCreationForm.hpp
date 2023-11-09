@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 23:51:36 by imurugar          #+#    #+#             */
-/*   Updated: 2023/11/08 15:49:40 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:17:46 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@
 
 class ShrubberyCreationForm : public AForm
 {
-	private:
-		std::string _target;
-		ShrubberyCreationForm(void);
+		
 	public:
 		ShrubberyCreationForm(std::string target);
 		ShrubberyCreationForm(ShrubberyCreationForm const & rhs);

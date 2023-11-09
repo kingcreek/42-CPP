@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 07:26:54 by imurugar          #+#    #+#             */
-/*   Updated: 2023/11/07 23:42:17 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:05:35 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,16 @@ class Bureaucrat
 		Bureaucrat& operator=(const Bureaucrat& src);
 
 		// Getters
-		const std::string 	getName();
-		int 				getGrade();
+		const std::string 	getName() const;
+		int 				getGrade() const;
 
 		// Grade modifiers
 		void				incrementGrade();
 		void				decrementGrade();
 
 		// AForm functions
-		void				signForm(AForm& src);
+		void			signForm(AForm& src);
+		void			executeForm(AForm const& form);
 
 		// Exceptions
 		class GradeTooHighException : public std::exception {

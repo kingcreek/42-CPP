@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:15:23 by imurugar          #+#    #+#             */
-/*   Updated: 2023/11/07 23:43:59 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:44:59 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,24 @@ AForm& AForm::operator=(const AForm& src) {
 	return *this;
 }
 
-std::string AForm::getName() const {
+const std::string AForm::getName() const {
     return this->_name;
 }
 
-int AForm::getGradeSign() {
+int AForm::getGradeSign() const {
     return this->_requiredGradeSign;
 }
 
-int AForm::getGradeExec() {
+int AForm::getGradeExec() const {
     return this->_requiredGradeExec;
 }
 
-bool AForm::isSigned() {
+bool AForm::isSigned() const {
 	return this->_signed;
+}
+
+void AForm::setTarget(const std::string &target) const {
+	this->_target = target;
 }
 
 void AForm::beSigned(Bureaucrat& b) {
