@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:15:23 by imurugar          #+#    #+#             */
-/*   Updated: 2023/11/09 14:44:59 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:05:54 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,16 @@ bool AForm::isSigned() const {
 	return this->_signed;
 }
 
-void AForm::setTarget(const std::string &target) const {
+std::string AForm::getTarget(void) const {
+	return this->_target;
+}
+
+void AForm::setTarget(std::string target) {
 	this->_target = target;
+}
+
+void AForm::setSign(bool sign) {
+	this->_signed = sign;
 }
 
 void AForm::beSigned(Bureaucrat& b) {

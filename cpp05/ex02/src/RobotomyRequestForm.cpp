@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 14:08:38 by imurugar          #+#    #+#             */
-/*   Updated: 2023/11/09 14:48:06 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:03:16 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 #include <cstdlib>
 #include <iostream>
 #include "RobotomyRequestForm.hpp"
+#include "Bureaucrat.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target) 
 : AForm("RobotomyRequestForm", 72, 45) {
 	this->setTarget(target);
-};
+}
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &to_copy)
 : AForm(to_copy.getName(), to_copy.getGradeSign(), to_copy.getGradeExec()) {
@@ -39,9 +40,6 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm &a
 		return *this;
 	return *this;
 }
-
-RobotomyRequestForm::~RobotomyRequestForm()
-{std::cout << "RobotomyRequestForm destructor called" << std::endl;}
 
 void RobotomyRequestForm::execute(Bureaucrat const& executor) const
 {

@@ -6,16 +6,17 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 15:50:16 by imurugar          #+#    #+#             */
-/*   Updated: 2023/11/09 14:47:38 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:02:44 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
+#include "Bureaucrat.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm(std::string target)
 : AForm("PresidentialPardonForm", 25, 5) {
 	this->setTarget(target);
-};
+}
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &copy)
 : AForm(copy.getName(), copy.getGradeSign(), copy.getGradeExec()) {
@@ -33,9 +34,6 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 		return *this;
 	return *this;
 }
-
-PresidentialPardonForm::~PresidentialPardonForm()
-{std::cout << "PresidentialPardonForm destructor called" << std::endl;}
 
 void PresidentialPardonForm::execute(Bureaucrat const& executor) const
 {

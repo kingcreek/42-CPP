@@ -6,22 +6,20 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 14:08:54 by imurugar          #+#    #+#             */
-/*   Updated: 2023/11/09 14:47:13 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:03:22 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <fstream>
 #include "ShrubberyCreationForm.hpp"
+#include "Bureaucrat.hpp"
 
-using std::cout;
-using std::cerr;
-using std::endl;
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
 : AForm("ShrubberyCreationForm", 145, 137) {
 	this->setTarget(target);
-};
+}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& to_copy)
 : AForm(to_copy.getName(), to_copy.getGradeSign(), to_copy.getGradeExec()) {
@@ -30,7 +28,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& to_cop
 
 ShrubberyCreationForm::~ShrubberyCreationForm(void) {
 	
-};
+}
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm &src)
 {
@@ -40,9 +38,6 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	}
 	return *this;
 }
-
-ShrubberyCreationForm::~ShrubberyCreationForm()
-{std::cout << "ShrubberyCreationForm destructor called" << std::endl;}
 
 void ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 {

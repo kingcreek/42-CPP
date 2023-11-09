@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 07:47:04 by imurugar          #+#    #+#             */
-/*   Updated: 2023/11/09 14:02:03 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:49:15 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,4 @@ int main (void)
 	}
 
 	std::cout << std::endl;
-	return EXIT_SUCCESS;
 }
