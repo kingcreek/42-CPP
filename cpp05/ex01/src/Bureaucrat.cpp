@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 07:26:57 by imurugar          #+#    #+#             */
-/*   Updated: 2023/11/07 22:41:23 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/11/15 18:18:51 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,12 @@ void Bureaucrat::signForm(Form& src) {
 		return;	
 	}
 	std::cout << this->getName() << " signed " << src.getName() << std::endl;
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw() {
+	return "Bureaucrat::GradeTooHighException: Grade too high";
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw() {
+	return "Bureaucrat::GradeTooLowException: Grade too low";
 }

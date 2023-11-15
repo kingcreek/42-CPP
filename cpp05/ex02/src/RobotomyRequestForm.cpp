@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 14:08:38 by imurugar          #+#    #+#             */
-/*   Updated: 2023/11/09 15:03:16 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/11/15 18:59:05 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,14 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm &a
 void RobotomyRequestForm::execute(Bureaucrat const& executor) const
 {
 	if (executor.getGrade() > this->getGradeExec())
-		throw Bureaucrat::GradeTooLowException();
+		throw GradeTooLowException();
 	else if (this->isSigned() == false)
-		std::cerr << "RobotomyRequestForm couldn't be executed by " << executor.getName() << " because it wasn't signed!" << std::endl;
+		throw FormNotSignedException();
+	
+	std::srand(std::time(NULL));
+	std::cout << "(Loud drill noises) " << std::endl;
+	if (random() % 2 == 0)
+		std::cout << this->getTarget() << " successfully robotomized." << std::endl;
 	else
-	{
-		std::srand(std::time(NULL));
-
-		std::cout << "(Loud drill noises) " << std::endl;
-
-		if (random() % 2 == 0)
-			std::cout << this->getTarget() << " successfully robotomized." << std::endl;
-		else
-			std::cout << this->getTarget() << " failed when trying to robotimize." << std::endl;
-	}
+		std::cout << this->getTarget() << " failed when trying to robotimize." << std::endl;
 }

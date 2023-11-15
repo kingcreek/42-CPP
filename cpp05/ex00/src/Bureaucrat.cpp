@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 07:26:57 by imurugar          #+#    #+#             */
-/*   Updated: 2023/11/07 10:47:59 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/11/15 18:18:34 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,12 @@ void    Bureaucrat::decrementGrade() {
 std::ostream& operator<<( std::ostream& o, Bureaucrat& src ) {
     o << src.getName() << ", bureaucrat grade " << src.getGrade();
     return o;
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw() {
+	return "Bureaucrat::GradeTooHighException: Grade too high";
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw() {
+	return "Bureaucrat::GradeTooLowException: Grade too low";
 }

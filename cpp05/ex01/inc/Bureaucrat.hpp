@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 07:26:54 by imurugar          #+#    #+#             */
-/*   Updated: 2023/11/07 22:25:11 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/11/15 18:18:29 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ class Bureaucrat
 		// Exceptions
 		class GradeTooHighException : public std::exception {
 			public:
-				virtual const char* what() const throw() { return "Bureaucrat::GradeTooHighException: Grade too high"; }
+				virtual const char* what() const throw();
 		};
 		class GradeTooLowException : public std::exception {
 			public:
-				virtual const char* what() const throw() { return "Bureaucrat::GradeTooLowException: Grade too low"; }
+				virtual const char* what() const throw();
 		};
 };
 

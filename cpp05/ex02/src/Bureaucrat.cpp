@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 07:26:57 by imurugar          #+#    #+#             */
-/*   Updated: 2023/11/09 14:44:33 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/11/15 18:32:48 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,13 @@ void Bureaucrat::executeForm(AForm const& form) {
 		std::cout << " (reason: " << e.what() << ")" << std::endl;
 		return;
 	}
-	
 	std::cout << this->getName() << " executed " << form.getName() << std::endl;
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw() {
+	return "Bureaucrat::GradeTooHighException: Grade too high";
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw() {
+	return "Bureaucrat::GradeTooLowException: Grade too low";
 }

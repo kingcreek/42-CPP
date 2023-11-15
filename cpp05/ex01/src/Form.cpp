@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:15:23 by imurugar          #+#    #+#             */
-/*   Updated: 2023/11/07 22:41:12 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/11/15 18:23:11 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,16 @@ std::ostream& operator<<(std::ostream& os, Form& src) {
 	os << "Required grade to execute: " << src.getGradeExec() << std::endl;
 	os << (src.isSigned() ? "Signed" : "Not signed");
 	return os;
+}
+
+const char* Form::GradeTooHighException::what() const throw() {
+	return "Form::GradeTooHighException: Grade too high";
+}
+
+const char* Form::GradeTooLowException::what() const throw() {
+	return "Form::GradeTooLowException: Grade too low";
+}
+
+const char* Form::FormAlreadySignedException::what() const throw() {
+	return "Form::FormAlreadySignedException: Form already signed";
 }

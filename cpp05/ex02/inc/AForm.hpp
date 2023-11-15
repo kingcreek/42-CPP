@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:39:59 by imurugar          #+#    #+#             */
-/*   Updated: 2023/11/09 15:05:09 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/11/15 18:25:21 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,19 @@ class AForm
 		// Exceptions
 		class GradeTooHighException : public std::exception {
 			public:
-				virtual const char* what() const throw() { return "AForm::GradeTooHighException: Grade too high"; }
+				virtual const char* what() const throw();
 		};
 		class GradeTooLowException : public std::exception {
 			public:
-				virtual const char* what() const throw() { return "AForm::GradeTooLowException: Grade too low"; }
+				virtual const char* what() const throw();
 		};
 		class FormAlreadySignedException : public std::exception {
 			public:
-				virtual const char* what() const throw() { return "AForm::AFormAlreadySignedException: Form already signed"; }
+				virtual const char* what() const throw();
 		};
 		class FormNotSignedException : public std::exception {
 			public:
-				virtual const char* what() const throw() { return "AForm::FormNotSignedException: Form form not signed"; }
+				virtual const char* what() const throw();
 		};
 };
 

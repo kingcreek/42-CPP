@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:15:23 by imurugar          #+#    #+#             */
-/*   Updated: 2023/11/09 15:05:54 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/11/15 18:39:08 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,22 @@ std::ostream& operator<<(std::ostream& os, AForm& src) {
 	os << src.getName() << ", form" << std::endl;
 	os << "Required grade to sign: " << src.getGradeSign() << std::endl;
 	os << "Required grade to execute: " << src.getGradeExec() << std::endl;
-	os << (src.isSigned() ? "Signed" : "Not signed");
+	os << (src.isSigned() ? " Signed" : " Not signed");
 	return os;
+}
+
+const char* AForm::GradeTooHighException::what() const throw() {
+	return "AForm::GradeTooHighException: Grade too high";
+}
+
+const char* AForm::GradeTooLowException::what() const throw() {
+	return "AForm::GradeTooLowException: Grade too low";
+}
+
+const char* AForm::FormAlreadySignedException::what() const throw() {
+	return "AForm::AFormAlreadySignedException: Form already signed";
+}
+
+const char* AForm::FormNotSignedException::what() const throw() {
+	return "AForm::FormNotSignedException: Form form not signed";
 }
