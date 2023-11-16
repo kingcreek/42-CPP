@@ -6,7 +6,7 @@
 #    By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 07:27:03 by imurugar          #+#    #+#              #
-#    Updated: 2023/11/16 07:09:21 by imurugar         ###   ########.fr        #
+#    Updated: 2023/11/16 07:12:05 by imurugar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS =	main.cpp \
 		PresidentialPardonForm.cpp \
 		RobotomyRequestForm.cpp \
 		ShrubberyCreationForm.cpp \
+		Intern.cpp \
 # ==========================================================================================
 
 # INCLUDES =================================================================================
