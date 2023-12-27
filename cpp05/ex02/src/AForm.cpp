@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: imurugar <imurugar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:15:23 by imurugar          #+#    #+#             */
-/*   Updated: 2023/11/15 18:39:08 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/12/27 18:38:24 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ std::ostream& operator<<(std::ostream& os, AForm& src) {
 	os << src.getName() << ", form" << std::endl;
 	os << "Required grade to sign: " << src.getGradeSign() << std::endl;
 	os << "Required grade to execute: " << src.getGradeExec() << std::endl;
-	os << (src.isSigned() ? " Signed" : " Not signed");
+	os << (src.isSigned() ? "Signed" : "Not signed");
 	return os;
 }
 

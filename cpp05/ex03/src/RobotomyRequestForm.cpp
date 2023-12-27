@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: imurugar <imurugar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 14:08:38 by imurugar          #+#    #+#             */
-/*   Updated: 2023/11/15 18:59:05 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/12/27 18:40:35 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,9 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &to_copy)
 }
 
 RobotomyRequestForm::~RobotomyRequestForm() {
-	#ifdef LOGS
-		cout << "[RobotomyRequestForm] Destructor called" << endl;
-	#endif
 }
 
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm &assign) {
-	#ifdef LOGS
-		cout << "[RobotomyRequestForm] copy assignment operator called"<< endl;
-	#endif
 	if (this == &assign)
 		return *this;
 	return *this;

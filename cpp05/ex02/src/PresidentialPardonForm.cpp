@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: imurugar <imurugar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 15:50:16 by imurugar          #+#    #+#             */
-/*   Updated: 2023/11/15 18:58:32 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/12/27 18:40:54 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,6 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &cop
 }
 
 PresidentialPardonForm::~PresidentialPardonForm(void) {
-	#ifdef LOGS
-		cout << "[PresidentialPardonForm] Destructor called" << endl;
-	#endif
 }
 
 PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm &assign) {

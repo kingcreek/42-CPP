@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Intern.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: imurugar <imurugar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 07:15:52 by imurugar          #+#    #+#             */
-/*   Updated: 2023/11/16 07:30:10 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/12/27 18:24:07 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ Intern::~Intern(void)
 
 Intern & Intern::operator=(Intern const & rhs)
 {
-	(void)rhs;
+	if (this != &rhs)
+        *this = rhs;
 	return *this;
 }
 
@@ -39,8 +40,8 @@ AForm*   Intern::makeForm( std::string name, std::string target ) {
 
     std::string formNames[] = {
         "robotomy request",
-        "presidential pardon",
-        "shrubbery creation"
+        "presidential request",
+        "shrubbery request"
     };
 	/*
     AForm*    forms[] = {

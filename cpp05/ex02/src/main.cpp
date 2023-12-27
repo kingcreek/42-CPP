@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: imurugar <imurugar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 07:47:04 by imurugar          #+#    #+#             */
-/*   Updated: 2023/11/16 07:08:43 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/12/27 18:36:34 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 int main() {
 
 	std::cout << "========== ==========" << std::endl;
-	std::cout << "Lets start with some basic tests" << std::endl;
 	std::cout << "ShrubberyCreationForm" << std::endl;
 	std::cout << "========== ==========" << std::endl;
 	

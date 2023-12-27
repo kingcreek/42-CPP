@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: imurugar <imurugar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 07:47:04 by imurugar          #+#    #+#             */
-/*   Updated: 2023/11/07 10:48:02 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/12/27 15:23:00 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int main(void)
 			std::cout << e.what() << std::endl;
 		}
 	}
-
+	
+	system("leaks Bureaucrat");
 	
 }
