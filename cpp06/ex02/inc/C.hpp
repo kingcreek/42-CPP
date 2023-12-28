@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   C.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 23:51:12 by imurugar          #+#    #+#             */
-/*   Updated: 2023/12/27 18:51:00 by imurugar         ###   ########.fr       */
+/*   Created: 2023/12/28 18:05:48 by imurugar          #+#    #+#             */
+/*   Updated: 2023/12/28 18:27:30 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RRF_HPP
-# define RRF_HPP
+#ifndef C_HPP
+#define C_HPP
 
-#include "AForm.hpp"
+#include "Base.hpp"
 
-class RobotomyRequestForm: public AForm
+class C : public Base
 {
 		
-	public:
-		RobotomyRequestForm(std::string target);
-		RobotomyRequestForm(RobotomyRequestForm const & rhs);
-		~RobotomyRequestForm(void);
-		RobotomyRequestForm & operator=(RobotomyRequestForm const & rhs);
-
-		void execute(Bureaucrat const & executor) const;
 };
 
 #endif

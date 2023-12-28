@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 23:51:12 by imurugar          #+#    #+#             */
-/*   Updated: 2023/12/27 18:51:00 by imurugar         ###   ########.fr       */
+/*   Created: 2023/12/28 17:37:30 by imurugar          #+#    #+#             */
+/*   Updated: 2023/12/28 17:41:54 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RRF_HPP
-# define RRF_HPP
+#include "Serializer.hpp"
 
-#include "AForm.hpp"
+Serializer::Serializer() {}
+Serializer::~Serializer() {}
 
-class RobotomyRequestForm: public AForm
-{
-		
-	public:
-		RobotomyRequestForm(std::string target);
-		RobotomyRequestForm(RobotomyRequestForm const & rhs);
-		~RobotomyRequestForm(void);
-		RobotomyRequestForm & operator=(RobotomyRequestForm const & rhs);
+Serializer::Serializer(Serializer& other) {
+	(void) other;
+}
 
-		void execute(Bureaucrat const & executor) const;
-};
+Serializer& Serializer::operator=(Serializer& src) {
+	(void) src;
+	return *this;
+}
 
-#endif
+uintptr_t Serializer::serialize(Data* ptr) {
+	return reinterpret_cast<uintptr_t>(ptr);
+}
+
+Data* Serializer::deserialize(uintptr_t raw) {
+	return reinterpret_cast<Data*>(raw);
+}
