@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 21:17:35 by imurugar          #+#    #+#             */
-/*   Updated: 2024/01/02 00:06:59 by imurugar         ###   ########.fr       */
+/*   Updated: 2024/01/02 00:10:33 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,15 @@ class PmergeMe
 {
 
 private:
+	//Containers used
 	std::vector<unsigned int> _vector;
 	std::deque<unsigned int> _deque;
 
+	//helper functions
 	void validateArgument(std::string arg);
 	int calculateThreshold(int size);
 
-	// short template functions
+	// short template functions (defined in .cpp)
 	template <typename Container>
 	void merge(Container &arr, int left, int mid, int right);
 
@@ -44,6 +46,7 @@ private:
 	template <typename Container>
 	void mergeInsertSort(Container &arr, int left, int right);
 
+	//display template function
 	template <typename T>
 	void display(const T &container)
 	{
@@ -53,6 +56,7 @@ private:
 		std::cout << std::endl;
 	}
 
+	//helper template functions
 	template <typename Container>
 	bool isSorted(const Container &arr)
 	{
