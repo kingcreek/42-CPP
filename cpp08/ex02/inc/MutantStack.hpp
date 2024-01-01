@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 19:13:30 by imurugar          #+#    #+#             */
-/*   Updated: 2023/12/30 19:43:57 by imurugar         ###   ########.fr       */
+/*   Updated: 2023/12/30 20:04:52 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ class MutantStack : public std::stack<T>
     public:
         MutantStack() : std::stack<T>() {}
         MutantStack(MutantStack const &other) : std::stack<T>(other) {}
-		//unnecesary
-		/*
+		
+		//Redundant operator =, stack already have implemented
         MutantStack &operator=(MutantStack const &other)
         {
             if (this != &other)
@@ -34,9 +34,8 @@ class MutantStack : public std::stack<T>
             }
             return (*this);
         }
-
+		//Same with destructor
         ~MutantStack() {}
-		*/
         typedef typename std::stack<T>::container_type::iterator iterator;
         typedef typename std::stack<T>::container_type::reverse_iterator reverse_iterator;
 
