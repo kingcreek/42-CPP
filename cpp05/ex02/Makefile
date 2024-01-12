@@ -78,6 +78,7 @@ $(NAME): $(OBJS)
 all: $(NAME)
 
 clean:
+	@$(RM) SCF_shrubbery
 	@$(RM) $(OBJS_DIR)
 	@printf "$(RED)$(CHECKMARK)    - Objects removed.$(RESET)\n"
 

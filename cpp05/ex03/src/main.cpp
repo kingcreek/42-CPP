@@ -24,10 +24,10 @@ int main()
 {
 
     {
-    Intern RandomIntern;
-    AForm* rrf;
-    rrf = RandomIntern.makeForm("robotomy request", "Bender");
-    delete rrf;
+    	Intern RandomIntern;
+    	AForm* rrf;
+    	rrf = RandomIntern.makeForm("robotomy request", "Bender");
+    	delete rrf;
     }
     std::cout << std::endl;
     // Create bureaucrats

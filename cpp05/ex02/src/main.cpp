@@ -29,10 +29,8 @@ int main() {
 	if (!f)
 		return 1;
 	std::cout << *f << std::endl;
-	Bureaucrat b("carlos", 1);
+	Bureaucrat b("Buro-1", 1);
 	std::cout << b << std::endl;
-
-	std::cout << "carlos will have no problem executing this form" << std::endl;
 
 	b.signForm(*f);
 	b.executeForm(*f);

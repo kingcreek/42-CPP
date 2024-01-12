@@ -20,23 +20,23 @@ Intern::Intern(void)
 {
 }
 
-Intern::Intern(Intern const & obj)
+Intern::Intern(Intern const & src)
 {
-	*this = obj;
+	*this = src;
 }
 
 Intern::~Intern(void)
 {
 }
 
-Intern & Intern::operator=(Intern const & rhs)
+Intern & Intern::operator=(Intern const & src)
 {
-	if (this != &rhs)
-        *this = rhs;
+	if (this != &src)
+        *this = src;
 	return *this;
 }
 
-AForm*   Intern::makeForm( std::string name, std::string target ) {
+AForm*   Intern::makeForm(std::string name, std::string target) {
 
     std::string formNames[] = {
         "robotomy request",
@@ -45,14 +45,14 @@ AForm*   Intern::makeForm( std::string name, std::string target ) {
     };
 	/*
     AForm*    forms[] = {
-        new RobotomyRequestForm( target ),
-        new PresidentialPardonForm( target ),
-        new ShrubberyCreationForm( target )
+        new RobotomyRequestForm(target),
+        new PresidentialPardonForm(target),
+        new ShrubberyCreationForm(target)
     };
 	*/
     
-    for ( int i(0); i < 3; i++ ) {
-        if ( name == formNames[i] ) {
+    for (int i(0); i < 3; i++) {
+        if (name == formNames[i]) {
 			switch(i)
 			{
 				case 0:
