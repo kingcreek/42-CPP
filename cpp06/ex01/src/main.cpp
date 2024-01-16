@@ -28,8 +28,8 @@ int main() {
     std::cout << std::endl;
 
 	Data* deserialized = Serializer::deserialize(serialized);
-
-    std::cout << "Serialized value: " << serialized << std::endl;
+	
+    std::cout << "Deserialized value: " << deserialized << std::endl;
     std::cout << "Data Value: " << deserialized->value << std::endl;
     std::cout << "Data Character: " << deserialized->character << std::endl;
     std::cout << std::endl;

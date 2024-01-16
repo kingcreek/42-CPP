@@ -37,30 +37,46 @@ Base * generate(void){
 
 void identify(Base* p){
 	if (dynamic_cast<A*>(p))
-		std::cout << "A" << std::endl;
+		std::cout << "A";
 	else if (dynamic_cast<B*>(p))
-		std::cout << "B" << std::endl;
+		std::cout << "B";
 	else if (dynamic_cast<C*>(p))
-		std::cout << "C" << std::endl;
+		std::cout << "C";
 }
+
+/*
+Better, but using a pointer? "<A*>..."
+void identify(Base& p);
+It prints the actual type of the object pointed to by p: "A", "B" or "C". Using a pointer
+inside this function is forbidden
+
+void identify(Base& p) {
+    if (dynamic_cast<A*>(&p))
+        std::cout << "A";
+    else if (dynamic_cast<B*>(&p))
+        std::cout << "B";
+    else if (dynamic_cast<C*>(&p))
+        std::cout << "C";
+}
+*/
 
 void identify(Base& p){
 	try {
 		A& a = dynamic_cast<A&>(p);
 		(void) a;
-		std::cout << "A" << std::endl;
+		std::cout << "A";
 	}
 	catch (std::exception&) {}
 	try {
-		B& a = dynamic_cast<B&>(p);
-		(void) a;
-		std::cout << "B" << std::endl;
+		B& b = dynamic_cast<B&>(p);
+		(void) b;
+		std::cout << "B";
 	}
 	catch (std::exception&) {}
 	try {
-		C& a = dynamic_cast<C&>(p);
-		(void) a;
-		std::cout << "C" << std::endl;
+		C& c = dynamic_cast<C&>(p);
+		(void) c;
+		std::cout << "C";
 	}
 	catch (std::exception&) {}
 }
@@ -69,9 +85,10 @@ void print_ptr_ref(Base *r)
 {
 	std::cout << "ptr: ";
 	identify(r);
+	std::cout << std::endl;
 	std::cout << "reference: ";
 	identify(*r);
-	std::cout << "-----" << std::endl;
+	std::cout << std::endl;
 }
 int main() {
 	
@@ -100,9 +117,21 @@ int main() {
 	for (int i(0); i < 5; i++)
 	{
 		Base *rnd = generate();
+		if (!rnd)
+			continue ;
 		print_ptr_ref(rnd);
+		std::cout << "-----" << std::endl;
 		delete rnd;
 	}
 	
+	std::cout << "============" << std::endl;
+	std::cout << "=  ERRORS  =" << std::endl;
+	std::cout << "============" << std::endl;
+	std::cout << std::endl;
+	
+	std::cout << "TEST NULL:" << std::endl;
+	print_ptr_ref(NULL);
+	std::cout << "TEST 0:" << std::endl;
+	print_ptr_ref(0);
     return (0);
 }
