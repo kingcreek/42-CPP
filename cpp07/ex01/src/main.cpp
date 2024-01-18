@@ -11,31 +11,6 @@
 /* ************************************************************************** */
 
 #include "iter.hpp"
-#include <iostream>
-
-/*
-template <typename T>
-void increment(T& value) {
-    value++;
-}
-
-template <typename T>
-void print(T& value) {
-    std::cout << value << " ";
-}
-*/
-
-void print(int& n) { std::cout << n << " "; }
-
-void print(double& n) { std::cout << n << " ";}
-
-void print(char& n) { std::cout << n << " ";}
-
-void increment(int& value) { value++; }
-
-void increment(double& value) { value++; }
-
-void increment(char& value) { value++; }
 
 int main(void)
 {

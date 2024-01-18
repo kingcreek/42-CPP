@@ -13,8 +13,6 @@
 #include <iostream>
 #include <Array.hpp>
 
-#define MAX_VAL 750
-
 void try_access(Array<int> arr, int position, std::string str)
 {
 	try
@@ -103,5 +101,10 @@ int main(int, char**)
 	std::cout << "Char array:" << std::endl;
 	for (size_t i = 0; i < charray.size(); i++) std::cout << charray[i] << std::endl;
 	
+	//Not compile (can read but not write)
+	const Array<char> tmp(charray);
+	std::cout << tmp[0] << std::endl;
+	//tmp[0] = 'a';
+
     return 0;
 }

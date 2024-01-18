@@ -16,6 +16,7 @@
 #include <cstddef>
 #include <exception>
 #include <iostream>
+#include <stdexcept>
 
 template <class T>
 class Array
@@ -26,41 +27,50 @@ private:
 	unsigned int _size;
 
 public:
-	Array()
+	Array() : _arr(new T[0]), _size(0)
 	{
-		this->_arr = new T[0];
-		this->_size = 0;
+		if (_arr == NULL)
+        	throw std::bad_alloc();
 	}
-	~Array() { delete[] this->_arr; }
 
-	Array(unsigned int n)
-	{
-		this->_arr = new T[n];
-		if (!this->_arr)
-		{
-			std::cerr << "fatal: cannot allocate memory" << std::endl;
-			return;
-		}
-		this->_size = n;
+	~Array()
+	{ 
+		if (this->_arr != NULL)
+        	delete[] _arr;
 	}
-	Array(const Array &other)
+
+	Array(unsigned int n): _arr(new T[n]), _size(n)
 	{
-		this->_arr = new T[other._size];
-		for (size_t i = 0; i < other._size; i++)
+		if (_arr == NULL)
+        	throw std::bad_alloc();
+		for (unsigned int i = 0; i < n; ++i)
+    	{
+        	_arr[i] = T();
+    	}
+	}
+	Array(const Array &other): _arr(new T[other._size]), _size(other._size)
+	{
+		if (_arr == NULL)
+        	throw std::bad_alloc();
+		for (size_t i = 0; i < _size; i++)
 		{
 			this->_arr[i] = other._arr[i];
 		}
-		this->_size = other._size;
 	}
-	Array &operator=(const Array &rhs)
+	Array &operator=(const Array &other)
 	{
-		delete[] this->_arr;
-		this->_arr = new T[rhs._size];
-		for (size_t i = 0; i < rhs._size; i++)
-		{
-			this->_arr[i] = rhs._arr[i];
+		if (this != &other)
+    	{
+			delete[] _arr;
+			this->_size = other._size;
+			this->_arr = new T[_size];
+			if (_arr == NULL)
+            	throw std::bad_alloc();
+			for (size_t i = 0; i < _size; i++)
+			{
+				this->_arr[i] = other._arr[i];
+			}
 		}
-		this->_size = rhs._size;
 		return *this;
 	};
 
@@ -68,8 +78,16 @@ public:
 	{
 		if (i < 0 || (unsigned int)i >= this->_size)
 		{
-			throw std::runtime_error("fatal: index out of bounds");
-			return this->_arr[0];
+			throw std::out_of_range("Index out of range");
+		}
+		return this->_arr[i];
+	}
+
+	const T &operator[](int i) const
+	{
+		if (i < 0 || (unsigned int)i >= this->_size)
+		{
+			throw std::out_of_range("Index out of range");
 		}
 		return this->_arr[i];
 	}
