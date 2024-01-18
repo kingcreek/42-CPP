@@ -35,7 +35,7 @@ void ScalarConverter::displayChar(std::string& s) {
 	if (std::isprint(s[0]))
 		std::cout << "char: '" << s[0] << "'" << std::endl;
 	else
-		std::cout << "char: Non displayable2" << std::endl;
+		std::cout << "char: Non displayable" << std::endl;
 	if (i > static_cast<int>(std::numeric_limits<int>::max()))
 		std::cout << "int: Overflow" << std::endl;
 	else if (i < static_cast<int>(std::numeric_limits<int>::min()))

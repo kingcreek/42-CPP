@@ -130,8 +130,8 @@ int main() {
 	std::cout << std::endl;
 	
 	std::cout << "TEST NULL:" << std::endl;
-	print_ptr_ref(NULL);
+	identify(NULL);
 	std::cout << "TEST 0:" << std::endl;
-	print_ptr_ref(0);
+	identify(0);
     return (0);
 }
