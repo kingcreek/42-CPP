@@ -52,7 +52,7 @@ public:
 	{
 		if (_arr == NULL)
         	throw std::bad_alloc();
-		for (size_t i = 0; i < _size; i++)
+		for (size_t i = 0; i < _size; ++i)
 		{
 			this->_arr[i] = other._arr[i];
 		}
