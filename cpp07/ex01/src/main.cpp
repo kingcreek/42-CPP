@@ -23,14 +23,11 @@ int main(void)
 
     std::cout << "Original array: ";
     iter(intArray, intArrayLength, &print);
-	//iter(intArray, intArrayLength, print<int>);
     std::cout << std::endl;
 
     iter(intArray, intArrayLength, &increment);
-	//iter(intArray, intArrayLength, increment<int>);
     std::cout << "After increment: ";
     iter(intArray, intArrayLength, &print);
-	//iter(intArray, intArrayLength, print<int>);
     std::cout << std::endl;
 	std::cout << std::endl;
 	
