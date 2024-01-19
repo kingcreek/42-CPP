@@ -16,20 +16,22 @@
 #include <iostream>
 #include <map>
 #include <string>
+#include <cstdlib>
 
 class BitcoinExchange
 {
 
 private:
-	std::map<std::time_t, float> _map;
+	std::map<std::string, float> _map;
 
 	double stringToFloat(const std::string &str);
-	bool isValidDate(const std::tm &timeStruct);
+	//bool isValidDate(const std::tm &timeStruct);
 	bool validateDate(const std::string &s);
-	std::time_t getTimestamp(const std::string &dateString);
+	//std::time_t getTimestamp(const std::string &dateString);
 	void loadDB();
-	void parseInput(std::string &file);
-	void fillMap(const std::string line);
+	void parseInput(const std::string &file);
+	void fillMap(std::string line);
+	void trimSpaces(std::string &s);
 
 public:
 	BitcoinExchange();

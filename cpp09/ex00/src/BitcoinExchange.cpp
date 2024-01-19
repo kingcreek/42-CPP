@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 20:07:53 by imurugar          #+#    #+#             */
-/*   Updated: 2023/12/31 21:06:21 by imurugar         ###   ########.fr       */
+/*   Updated: 2024/01/19 19:41:07 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,68 +38,40 @@ double BitcoinExchange::stringToFloat(const std::string &str)
 	char *endPtr;
 	float result = std::strtof(str.c_str(), &endPtr);
 	
-	if (*endPtr) throw std::runtime_error("invalid value");
+	if (*endPtr) throw std::runtime_error("invalid value => " + str);
 	if (result < 0) throw std::runtime_error("not a positive number");
 	return result;
 }
 
-bool BitcoinExchange::isValidDate(const std::tm &timeStruct)
-{
-	return timeStruct.tm_year >= 0 && timeStruct.tm_mon >= 0 && timeStruct.tm_mday > 0;
-}
-
-bool BitcoinExchange::validateDate(const std::string &s)
-{
+bool BitcoinExchange::validateDate(const std::string &s) {
 	bool ret = true;
 	const char *format = "%Y-%m-%d";
 	struct tm tp;
-
-	if (strptime(s.c_str(), format, &tp) == NULL)
-		ret = false;
-	if (!std::isdigit(s[s.size() - 1]))
-		ret = false;
-	for(size_t i = 0; i < s.length(); i++)
-		if(!std::isdigit(s[i]) && s[i] != '-')
-			ret = false;
-
+	
+	if (strptime(s.c_str(), format, &tp) == NULL) ret = false;
+	if (!std::isdigit(s[s.size() - 1])) ret = false;
+	
 	return ret;
 }
 
-std::time_t BitcoinExchange::getTimestamp(const std::string &dateString)
+void BitcoinExchange::trimSpaces(std::string &s)
 {
-	std::tm timeStruct = {};
-
-	std::istringstream dateStream(dateString.c_str());
-	dateStream >> std::get_time(&timeStruct, "%Y-%m-%d");
-
-	// Check if parsing was successful
-	if (dateStream.fail() || !isValidDate(timeStruct) || !validateDate(dateString))
-	{
-		throw std::runtime_error("Error: Invalid date format");
-	}
-
-	timeStruct.tm_hour = 12;
-	timeStruct.tm_min = 0;
-	timeStruct.tm_sec = 0;
-
-	std::time_t timestamp = std::mktime(&timeStruct);
-	if (timestamp == -1)
-	{
-		throw std::runtime_error("Error: Could not convert date to timestamp");
-	}
-
-	return timestamp;
+	s.erase(s.find_last_not_of(' ') + 1);
+	s.erase(0, s.find_first_not_of(' '));
 }
 
-void BitcoinExchange::fillMap(const std::string line)
+void BitcoinExchange::fillMap(std::string line)
 {
 	size_t findPos = line.find(',');
   	if (findPos == std::string::npos)
     	throw std::runtime_error("fatal: cannot find delimiter");
 	
+	trimSpaces(line);
+	
 	std::string key = line.substr(0, findPos);
 	std::string value = line.substr(findPos + 1);
-	this->_map[getTimestamp(key)] = stringToFloat(value);
+
+	this->_map[key] = stringToFloat(value);
 }
 
 void BitcoinExchange::loadDB()
@@ -117,18 +89,25 @@ void BitcoinExchange::loadDB()
 	}
 }
 
-void BitcoinExchange::parseInput(std::string &file)
+void BitcoinExchange::parseInput(const std::string &file)
 {
-	std::ifstream input(file);
+	std::ifstream input(file.c_str());
 	if (!input.is_open())
-		throw std::runtime_error("Error: could not open: " + file);
+		throw std::runtime_error("could not open: " + file);
 	
 	std::string line;
 	std::getline(input, line);
 	while (std::getline(input, line))
 	{
 		//check date
-		std::string dat = line.substr(0, line.find('|') - 1);
+		size_t delimiter = line.find('|');
+		if (delimiter == std::string::npos)
+		{
+			std::cout << "Error: bad input => " << line << std::endl;
+			continue;
+		}
+		std::string dat = line.substr(0, delimiter);
+		trimSpaces(dat);
 		if (!validateDate(dat)) {
         	std::cout << "Error: bad input => " << dat << std::endl;
 			continue;
@@ -136,23 +115,17 @@ void BitcoinExchange::parseInput(std::string &file)
 		//check value
 		try
 		{
-			//check contains '|'
-			size_t findPos = line.find('|');
-			if (findPos == std::string::npos)
-				throw std::runtime_error("fatal: cannot find delimiter");
-				
-			std::string tmp = line.substr(findPos + 2);
+			std::string tmp = line.substr(delimiter + 1);
 			float nbr = stringToFloat(tmp);
-			if (nbr > 1000) throw std::runtime_error("number too large");
+			if (nbr > 1000) throw std::runtime_error("too large a number.");
 			
 			std::cout << dat << " => ";
 			
-			std::map<std::time_t, float>::iterator it = (this->_map.lower_bound(getTimestamp(dat)));
+			std::map<std::string, float>::iterator it = (this->_map.lower_bound(dat));
 			if (it == _map.end())
 				--it;
 			
 			std::cout << nbr << " = " << nbr * it->second << std::endl;
-			
 		}
 		catch(const std::exception& e)
 		{
@@ -177,6 +150,6 @@ void BitcoinExchange::process(std::string file)
 		this->parseInput(file);
 	}
 	catch (std::exception &e) {
-		std::cerr << e.what() << std::endl;
+		std::cerr << "Error: " << e.what() << std::endl;
 	}
 }

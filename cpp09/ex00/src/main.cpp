@@ -29,5 +29,6 @@ int main(int argc, char *argv[])
 		return errUsage();
 
 	BitcoinExchange btc = BitcoinExchange();
-	btc.process(argv[1]);
+	std::string file = argv[1];
+	btc.process(file);
 }

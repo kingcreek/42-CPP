@@ -22,6 +22,8 @@ static int errUsage()
 	return EXIT_FAILURE;
 }
 
+// Online calculator for test
+// https://paodayag.dev/reverse-polish-notation-js-parser/
 int main(int argc, char *argv[])
 {
 

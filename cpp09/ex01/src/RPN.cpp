@@ -31,6 +31,8 @@ RPN &RPN::operator=(const RPN &src)
 
 bool RPN::isOperator(const std::string &token)
 {
+	if (token.length() != 1)
+        return (false);
     return token == "+" || token == "-" || token == "*" || token == "/";
 }
 
@@ -56,6 +58,25 @@ int RPN::performOperation(const std::string &oper, int operand1, int operand2)
     }
 }
 
+bool RPN::isNumber(const std::string &str)
+{
+    int operand = 0;
+    for (size_t i = 0; i < str.length(); i++)
+    {
+        if (isdigit(str[i]) == false && str[i] != '-')
+            return (false);
+        if (str[i] == '-' && i != 0)
+            return (false);
+        if (str[i] == '-' && i == 0 && str.length() == 1)
+            return (false);
+        if (str[i] == '-' && i == 0)
+            operand++;
+    }
+    if (operand > 1)
+        return (false);
+    return (true);
+}
+
 void RPN::processExpression(const std::string &expression)
 {
     std::istringstream iss(expression);
@@ -63,10 +84,10 @@ void RPN::processExpression(const std::string &expression)
 
     while (iss >> token)
     {
-        if (isdigit(token[0]) || (token.length() > 1 && isdigit(token[1])))
+        if (isNumber(token)) //if (isdigit(token[0]) || (token.length() > 1 && isdigit(token[1])))
         {
-            // Token is an operand, push it onto the stack
-            _stack.push(atoi(token.c_str()));
+            // If the token is a number, push it onto the list
+            _stack.push(std::atoi(token.c_str()));
         }
         else if (isOperator(token))
         {
@@ -87,7 +108,7 @@ void RPN::processExpression(const std::string &expression)
         }
         else
         {
-            throw std::runtime_error("Error: Invalid token");
+            throw std::runtime_error("Error: Invalid token =>" + token);
         }
     }
 

@@ -17,14 +17,17 @@
 #include <stack>
 #include <sstream>
 #include <stdexcept>
+#include <cstdlib>
 
 class RPN
 {
 
 private:
 	std::stack<int> _stack;
+	
 	bool isOperator(const std::string &token);
-    int performOperation(const std::string &oper, int operand1, int operand2);
+    int  performOperation(const std::string &oper, int operand1, int operand2);
+	bool isNumber(const std::string &str);
 
 public:
 	RPN();
