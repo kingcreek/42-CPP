@@ -74,18 +74,18 @@ public:
 		return *this;
 	};
 
-	T &operator[](int i)
+	T &operator[](unsigned int i)
 	{
-		if (i < 0 || (unsigned int)i >= this->_size)
+		if (i >= this->_size)
 		{
 			throw std::out_of_range("Index out of range");
 		}
 		return this->_arr[i];
 	}
 
-	const T &operator[](int i) const
+	const T &operator[](unsigned int i) const
 	{
-		if (i < 0 || (unsigned int)i >= this->_size)
+		if (i >= this->_size)
 		{
 			throw std::out_of_range("Index out of range");
 		}
