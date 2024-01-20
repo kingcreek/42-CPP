@@ -18,7 +18,9 @@ class Person {
 public:
     int _age;
 
-    Person() : _age(0) {}
+    Person() : _age(0) {
+		std::cout << "Person constructor called" << std::endl;
+	}
     Person(int age) : _age(age) {}
 };
 */
