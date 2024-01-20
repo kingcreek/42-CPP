@@ -116,8 +116,8 @@ int main(int, char**)
 	for (size_t i = 0; i < charray.size(); i++) std::cout << charray[i] << std::endl;
 	
 	//Not compile (can read but not write)
-	const Array<char> tmp(charray);
-	std::cout << tmp[0] << std::endl;
+	//const Array<char> tmp(charray);
+	//std::cout << tmp[0] << std::endl;
 	//tmp[0] = 'a';
 
     return 0;
