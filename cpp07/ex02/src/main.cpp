@@ -13,6 +13,16 @@
 #include <iostream>
 #include <Array.hpp>
 
+/*
+class Person {
+public:
+    int _age;
+
+    Person() : _age(0) {}
+    Person(int age) : _age(age) {}
+};
+*/
+
 void try_access(Array<int> arr, int position, std::string str)
 {
 	try
@@ -28,6 +38,8 @@ void try_access(Array<int> arr, int position, std::string str)
 
 int main(int, char**)
 {
+	//Array<Person> pers(10);
+
 	std::cout << "======================" << std::endl;
 	std::cout << "=== INVALID ACCESS ===" << std::endl;
 	std::cout << "======================" << std::endl;

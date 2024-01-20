@@ -43,6 +43,12 @@ public:
 	{
 		if (_arr == NULL)
         	throw std::bad_alloc();
+		/*
+		for (unsigned int i = 0; i < n; ++i)
+    	{
+        	_arr[i] = T();
+    	}
+		*/
 	}
 	Array(const Array &other): _arr(new T[other._size]), _size(other._size)
 	{
