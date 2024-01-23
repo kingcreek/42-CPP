@@ -36,7 +36,18 @@ class MutantStack : public std::stack<T>
         }
 		//Same with destructor
         ~MutantStack() {}
+		//
+		//Operators ++, -- etc are not need implement becouse this class extends from stack
+		//
+		
+		
+		// https://en.cppreference.com/w/cpp/header/stack
+		// this->c, its a reference to protected Container
+		// container_type: defined in stack header
+
+		// Define an alias 'iterator' for the iterator type of the underlying container
         typedef typename std::stack<T>::container_type::iterator iterator;
+		// Define an alias 'reverse_iterator', same as iterator but for reverse
         typedef typename std::stack<T>::container_type::reverse_iterator reverse_iterator;
 
         iterator begin() { return (this->c.begin()); }
@@ -44,78 +55,5 @@ class MutantStack : public std::stack<T>
         reverse_iterator rbegin() { return (this->c.rbegin()); }
         reverse_iterator rend() { return (this->c.rend()); }
 };
-
-/*
-#include <stack>
-#include <deque>
-#include <list>
-#include <iostream>
-
-// Forward declaration for iterator
-template <typename T, typename Container>
-class MutantStackIterator;
-
-template <typename T, typename Container = std::deque<T> >
-class MutantStack : public std::stack<T, Container> {
-public:
-    // Inherit constructors
-    explicit MutantStack(const Container& cont = Container()) : std::stack<T, Container>(cont) {}
-
-    // Iterator types
-    typedef MutantStackIterator<T, Container> iterator;
-    typedef MutantStackIterator<T, Container> const_iterator;
-
-    // Iterators for the underlying container
-    iterator begin() { return iterator(this->c.begin()); }
-    iterator end() { return iterator(this->c.end()); }
-
-    const_iterator begin() const { return const_iterator(this->c.begin()); }
-    const_iterator end() const { return const_iterator(this->c.end()); }
-};
-
-// Iterator class
-template <typename T, typename Container>
-class MutantStackIterator {
-private:
-    typename Container::iterator iter;
-
-public:
-    MutantStackIterator(typename Container::iterator it) : iter(it) {}
-
-    MutantStackIterator& operator++() {
-        ++iter;
-        return *this;
-    }
-
-    MutantStackIterator operator++(int) {
-        MutantStackIterator tmp = *this;
-        ++(*this);
-        return tmp;
-    }
-
-    MutantStackIterator& operator--() {
-        --iter;
-        return *this;
-    }
-
-    MutantStackIterator operator--(int) {
-        MutantStackIterator tmp = *this;
-        --(*this);
-        return tmp;
-    }
-
-    bool operator==(const MutantStackIterator& rhs) const {
-        return iter == rhs.iter;
-    }
-
-    bool operator!=(const MutantStackIterator& rhs) const {
-        return !(*this == rhs);
-    }
-
-    T& operator*() {
-        return *iter;
-    }
-};
-*/
 
 #endif

@@ -14,10 +14,17 @@
 
 int main()
 {
-	// PDF Provided Main
-	std::cout << "-----------------------------" << std::endl;
-	std::cout << "Main provided by the Sunbject" << std::endl;
-	std::cout << "-----------------------------" << std::endl;
+	// Only to show stack have not iterator
+	/*
+	std::stack<int> mstackss;
+	for (std::stack<int>::iterator it = mstackss.begin(); it != mstackss.end(); ++it) {
+        std::cout << *it << std::endl;
+    }
+	*/
+
+	std::cout << "=================" << std::endl;
+	std::cout << "==== Subject ====" << std::endl;
+	std::cout << "=================" << std::endl;
 	MutantStack<int> mstack;
 	std::cout << "Address of mstack: " << &mstack << std::endl;
 	mstack.push(5);
@@ -39,12 +46,13 @@ int main()
 		std::cout << *it << std::endl;
 		++it;
 	}
-	// To show that the stack is indeed a stack, we can also use the std::stack
+	
 	std::stack<int> s(mstack);
+	std::cout << std::endl;
 
-	std::cout << "------------------------------------------" << std::endl;
-	std::cout << "Testing with a list instead of MutantStack" << std::endl;
-	std::cout << "------------------------------------------" << std::endl;
+	std::cout << "========================" << std::endl;
+	std::cout << "==== Same with list ====" << std::endl;
+	std::cout << "========================" << std::endl;
 
 	std::list<int> lstack;
 	std::cout << "Address of lstack: " << &lstack << std::endl;
@@ -60,8 +68,8 @@ int main()
 	lstack.push_back(0);
 	std::list<int>::iterator iit = lstack.begin();
 	std::list<int>::iterator iite = lstack.end();
-	++it;
-	--it;
+	++iit;
+	--iite;
 	while (iit != iite)
 	{
 		std::cout << *iit << std::endl;
@@ -70,35 +78,46 @@ int main()
 	std::list<int> ss(lstack);
 	std::cout << std::endl;
 
-	std::cout << "---------------------------" << std::endl;
-	std::cout << "Testing assignment overload" << std::endl;
-	std::cout << "---------------------------" << std::endl;
+	std::cout << "======================" << std::endl;
+	std::cout << "==== Rev iterator ====" << std::endl;
+	std::cout << "======================" << std::endl;
+	
+    for (MutantStack<int>::reverse_iterator rit = mstack.rbegin(); rit != mstack.rend(); ++rit) {
+        std::cout << *rit << std::endl;
+    }
+	std::cout << std::endl;
+
+	std::cout << "================================" << std::endl;
+	std::cout << "==== Rev iterator with List ====" << std::endl;
+	std::cout << "================================" << std::endl;
+	for (std::list<int>::reverse_iterator rit = lstack.rbegin(); rit != lstack.rend(); ++rit) {
+        std::cout << *rit << std::endl;
+    }
+	std::cout << std::endl;
+
+	std::cout << "======================" << std::endl;
+	std::cout << "==== Operator (=) ====" << std::endl;
+	std::cout << "======================" << std::endl;
 
 	MutantStack<int> mstack2 = mstack;
+	std::cout << "Address of mstack: " << &mstack << std::endl;
 	std::cout << "Address of mstack2: " << &mstack2 << std::endl;
-	MutantStack<int>::iterator it2 = mstack2.begin();
-	MutantStack<int>::iterator ite2 = mstack2.end();
-	++it2;
-	--it2;
-	while (it2 != ite2)
-	{
-		std::cout << *it2 << std::endl;
-		++it2;
-	}
-	std::cout << "---------------------" << std::endl;
-	std::cout << "Testing copy operator" << std::endl;
-	std::cout << "---------------------" << std::endl;
+
+	for (MutantStack<int>::iterator it = mstack2.begin(); it != mstack2.end(); ++it) {
+        std::cout << *it << std::endl;
+    }
+	std::cout << std::endl;
+	
+	std::cout << "==============" << std::endl;
+	std::cout << "==== Copy ====" << std::endl;
+	std::cout << "==============" << std::endl;
+
 	MutantStack<int> mstack3(mstack);
+	std::cout << "Address of mstack3: " << &mstack << std::endl;
 	std::cout << "Address of mstack3: " << &mstack3 << std::endl;
-	MutantStack<int>::iterator it3 = mstack3.begin();
-	MutantStack<int>::iterator ite3 = mstack3.end();
-	++it3;
-	--it3;
-	while (it3 != ite3)
-	{
-		std::cout << *it3 << std::endl;
-		++it3;
-	}
+	for (MutantStack<int>::iterator it = mstack3.begin(); it != mstack3.end(); ++it) {
+        std::cout << *it << std::endl;
+    }
 
 	return (0);
 }
