@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 20:07:53 by imurugar          #+#    #+#             */
-/*   Updated: 2024/01/19 19:41:07 by imurugar         ###   ########.fr       */
+/*   Updated: 2024/01/23 13:45:36 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,49 @@ double BitcoinExchange::stringToFloat(const std::string &str)
 	return result;
 }
 
-bool BitcoinExchange::validateDate(const std::string &s) {
-	bool ret = true;
+bool isLeapYear(int year) {
+	//Leap year is divisible by 4 but not by 100 but if its divisible by 400 then is it
+	//ex: 1900 => 1900/4 = 475; but 1900/100 = 19; 1900/400 = 4.75 (non divisible by 400)
+    return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+}
+
+bool isValidDate(int year, int month, int day) {
+    if (month < 1 || month > 12) {
+        return false;
+    }
+
+    int daysInMonth[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+    // Adjust February days for leap years
+    if (month == 2 && isLeapYear(year)) {
+        daysInMonth[2] = 29;
+    }
+	
+    return day >= 1 && day <= daysInMonth[month];
+}
+
+bool isDateInCorrectFormat(const std::string& date) {
+    int year, month, day;
+    char format;
+
+    std::istringstream ss(date);
+    ss >> year >> format >> month >> format >> day;
+	
+    if (ss.fail() || ss.peek() != EOF || format != '-' || !isValidDate(year, month, day)) {
+        return false;
+    }
+
+    return true;
+}
+
+bool BitcoinExchange::validateDate(const std::string &date) {
 	const char *format = "%Y-%m-%d";
 	struct tm tp;
 	
-	if (strptime(s.c_str(), format, &tp) == NULL) ret = false;
-	if (!std::isdigit(s[s.size() - 1])) ret = false;
+	if (strptime(date.c_str(), format, &tp) == NULL) return false;
+	if (!std::isdigit(date[date.size() - 1])) return false;
 	
-	return ret;
+	return isDateInCorrectFormat(date);
 }
 
 void BitcoinExchange::trimSpaces(std::string &s)
