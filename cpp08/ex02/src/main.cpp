@@ -64,7 +64,7 @@ int main()
 	lstack.push_back(3);
 	lstack.push_back(5);
 	lstack.push_back(737);
-	//[...]
+	
 	lstack.push_back(0);
 	std::list<int>::iterator iit = lstack.begin();
 	std::list<int>::iterator iite = lstack.end();
