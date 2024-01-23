@@ -44,7 +44,10 @@ class MutantStack : public std::stack<T>
 		// https://en.cppreference.com/w/cpp/header/stack
 		// this->c, its a reference to protected Container
 		// container_type: defined in stack header
-
+		// by default {container_type} it's a subyacent {deque} container inside stack container,
+		// then we can acces to iterator of deque and create alias.
+		
+		//stack 
 		// Define an alias 'iterator' for the iterator type of the underlying container
         typedef typename std::stack<T>::container_type::iterator iterator;
 		// Define an alias 'reverse_iterator', same as iterator but for reverse
