@@ -19,6 +19,7 @@ int main(void)
 	std::cout << "====== SUBJECT MAIN ======" << std::endl;
 
 	Span sp = Span(5);
+
 	sp.addNumber(6);
 	sp.addNumber(3);
 	sp.addNumber(17);
@@ -27,51 +28,61 @@ int main(void)
 	std::cout << sp.shortestSpan() << std::endl;
 	std::cout << sp.longestSpan() << std::endl;
 
+	std::cout << "============================" << std::endl;
 	std::cout << "====== ERROR HANDLING ======" << std::endl;
+	std::cout << "============================" << std::endl;
+
+	std::cout << "Creating a span with 1 number and adding the number" << std::endl;
 	Span f = Span(1);
 	f.addNumber(1);
-	std::cout << "Create a span with 1 number, try to add another and try to get its spans" << std::endl;
+
+	std::cout << "Trying add another number" << std::endl;
 	try {
 		f.addNumber(1);
 	}
 	catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}
+	std::cout << "Getting longest span" << std::endl;
 	try {
 		std::cout << f.longestSpan() << std::endl;
 	}
 	catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}
+	std::cout << "Getting shortest span" << std::endl;
 	try {
 		std::cout << f.shortestSpan() << std::endl;
 	}
 	catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}
+	
+	std::cout << "==========================" << std::endl;
+	std::cout << "====== NORMAL USAGE ======" << std::endl;
+	std::cout << "==========================" << std::endl;
 
-	std::cout << "====== FUNCTIONALITY ======" << std::endl;
 	Span k(4);
 
 	k.addNumber(1);
 	k.addNumber(1);
 	k.addNumber(2);
 
-	std::cout << "Longest span: " << k.longestSpan() << std::endl;
-	std::cout << "Shortest span: " << k.shortestSpan() << std::endl;
+	std::cout << "Longest: " << k.longestSpan() << std::endl;
+	std::cout << "Shortest: " << k.shortestSpan() << std::endl;
 
-	std::cout << "Add -42" << std::endl;
+	std::cout << "Adding -42" << std::endl;
 
 	k.addNumber(-42);
 
-	std::cout << "Longest span: " << k.longestSpan() << std::endl;
-	std::cout << "Shortest span: " << k.shortestSpan() << std::endl;
+	std::cout << "Longest: " << k.longestSpan() << std::endl;
+	std::cout << "Shortest: " << k.shortestSpan() << std::endl;
 
-	std::cout << "Add 20.000 numbers, from 0 to 19.999, incrementing 5" << std::endl;
+	std::cout << "Adding 20000 numbers, init: 0 end 39998 (i * 2)" << std::endl;
 	Span m(20000);
 	std::vector<int> tmp;
-	for (int i = 0; i < 20000; i += 5)
-		tmp.push_back(i);
+	for (int i = 0; i < 20000; i++)
+		tmp.push_back(i * 2);
 	m.fill(tmp.begin(), tmp.end());
 	std::cout << "Longest span: " << m.longestSpan() << std::endl;
 	std::cout << "Shortest span: " << m.shortestSpan() << std::endl;

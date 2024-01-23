@@ -14,6 +14,8 @@
 #define SPAN_HPP
 
 #include <vector>
+#include <algorithm>
+#include "iostream"
 
 class Span
 {
@@ -31,7 +33,6 @@ public:
 	void addNumber(int nbr);
 	unsigned int longestSpan();
 	unsigned int shortestSpan();
-	//void fill(void);
 	void fill(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 };
 

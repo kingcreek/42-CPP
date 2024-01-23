@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "Span.hpp"
-#include "iostream"
 
 Span::Span() : _N(0) {}
 
@@ -42,7 +41,7 @@ unsigned int Span::longestSpan()
 {
 	if (this->_vector.size() <= 1)
 		throw std::runtime_error("No span can be detected");
-
+		
 	std::sort(this->_vector.begin(), this->_vector.end());
 	return this->_vector.back() - this->_vector.front();
 }
@@ -52,11 +51,10 @@ unsigned int Span::shortestSpan()
 	if (this->_vector.size() <= 1)
 		throw std::runtime_error("No span can be detected");
 
-	std::sort(this->_vector.begin(), this->_vector.end());
-
 	if (this->_vector.size() == 2)
 		return this->longestSpan();
 
+	std::sort(this->_vector.begin(), this->_vector.end());
 	unsigned int minSpan = this->_vector[1] - this->_vector[0];
 
 	for (size_t i = 1; i < this->_vector.size(); ++i)
@@ -78,18 +76,3 @@ void Span::fill(std::vector<int>::iterator begin, std::vector<int>::iterator end
 		++begin;
 	}
 }
-
-/*
-void Span::fill()
-{
-	if (this->_vector.size() >= _N)
-		return ;
-	srand(static_cast<unsigned int>(time(nullptr)));
-	while (_vector.size() < _N)
-	{
-		int randomValue = (rand()) + 1;
-		_vector.push_back(randomValue);
-		std::cout << randomValue << std::endl;
-	}
-}
-*/
