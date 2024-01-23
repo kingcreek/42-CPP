@@ -30,7 +30,8 @@ int main(void)
 	{
 		try
 		{
-			std::cout << "Find value: " << o << ":" << (*easyfind(lst, o)) << std::endl;
+			std::list<int>::iterator res = easyfind(lst, o);
+			std::cout << "Find value: " << o << ": " << *res << std::endl;
 		}
 		catch (const std::exception &ex)
 		{
@@ -52,7 +53,8 @@ int main(void)
 	{
 		try
 		{
-			std::cout << "Find value: " << o << ":" << (*easyfind(vect, o)) << std::endl;
+			std::vector<int>::iterator res = easyfind(vect, o);
+			std::cout << "Find value: " << o << ": " << *res << std::endl;
 		}
 		catch (const std::exception &ex)
 		{
@@ -74,7 +76,8 @@ int main(void)
 	{
 		try
 		{
-			std::cout << "Find value: " << o << ":" << (*easyfind(mydeque, o)) << std::endl;
+			std::deque<int>::iterator res = easyfind(mydeque, o);
+			std::cout << "Find value: " << o << ": " << *res << std::endl;
 		}
 		catch (const std::exception &ex)
 		{
