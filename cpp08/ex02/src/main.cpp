@@ -128,5 +128,13 @@ int main()
 		//*it = 10; // <= doesn't compile since we can't modify a constant iterator
     }
 
+	std::cout << "====================" << std::endl;
+	std::cout << "==== Const List ====" << std::endl;
+	std::cout << "====================" << std::endl;
+	for (std::list<int>::const_iterator it = ss.begin(); it != ss.end(); ++it) {
+        std::cout << *it << std::endl;
+		//*it = 10; // <= doesn't compile since we can't modify a constant iterator
+    }
+
 	return (0);
 }
