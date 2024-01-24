@@ -69,7 +69,7 @@ int main()
 	std::list<int>::iterator iit = lstack.begin();
 	std::list<int>::iterator iite = lstack.end();
 	++iit;
-	--iite;
+	--iit;
 	while (iit != iite)
 	{
 		std::cout << *iit << std::endl;

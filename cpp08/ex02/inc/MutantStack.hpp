@@ -53,6 +53,7 @@ class MutantStack : public std::stack<T>
 		// Define an alias 'reverse_iterator', same as iterator but for reverse
         typedef typename std::stack<T>::container_type::reverse_iterator reverse_iterator;
 
+		// Functions
         iterator begin() { return (this->c.begin()); }
         iterator end() { return (this->c.end()); }
         reverse_iterator rbegin() { return (this->c.rbegin()); }
