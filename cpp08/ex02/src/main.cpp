@@ -119,5 +119,14 @@ int main()
         std::cout << *it << std::endl;
     }
 
+	std::cout << "===============" << std::endl;
+	std::cout << "==== Const ====" << std::endl;
+	std::cout << "===============" << std::endl;
+	MutantStack<int> mstack4(mstack);
+	for (MutantStack<int>::const_iterator it = mstack4.begin(); it != mstack4.end(); ++it) {
+        std::cout << *it << std::endl;
+		//*it = 10; // <= doesn't compile since we can't modify a constant iterator
+    }
+
 	return (0);
 }
