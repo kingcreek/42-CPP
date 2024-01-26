@@ -28,6 +28,7 @@ private:
 	bool isOperator(const std::string &token);
     int  performOperation(const std::string &oper, int operand1, int operand2);
 	bool isNumber(const std::string &str);
+	void exec(std::string token);
 
 public:
 	RPN();
