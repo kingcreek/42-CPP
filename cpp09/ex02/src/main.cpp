@@ -14,8 +14,8 @@
 
 static int errUsage()
 {
-	std::cerr << "Error: invalid arguments" << std::endl;
-	std::cerr << "Usage: ./PmergeMe <N numbers>" << std::endl;
+	std::cout << "Error: invalid arguments" << std::endl;
+	std::cout << "Usage: ./PmergeMe <N numbers>" << std::endl;
 	return EXIT_FAILURE;
 }
 
@@ -33,7 +33,7 @@ int main(int argc, const char *argv[])
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << "Error: " << e.what() << std::endl;
+		std::cout << "Error: " << e.what() << std::endl;
 	}
 	
 	return EXIT_SUCCESS;
