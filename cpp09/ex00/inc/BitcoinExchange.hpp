@@ -22,16 +22,17 @@ class BitcoinExchange
 {
 
 private:
-	std::map<std::string, float> _map;
+	std::map<std::string, double> _map;
 
 	double stringToFloat(const std::string &str);
-	//bool isValidDate(const std::tm &timeStruct);
 	bool validateDate(const std::string &s);
-	//std::time_t getTimestamp(const std::string &dateString);
 	void loadDB();
 	void parseInput(const std::string &file);
 	void fillMap(std::string line);
 	void trimSpaces(std::string &s);
+	const std::string formatFloat(double num);
+	std::map<std::string, double>::iterator findNearestDate(const std::string& targetDate);
+	int dateDifference(const std::string& date1, const std::string& date2);
 
 public:
 	BitcoinExchange();

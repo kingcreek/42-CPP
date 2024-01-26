@@ -17,6 +17,7 @@
 #include <ctime>
 #include <cstring>
 #include <sstream>
+#include <iomanip>
 
 BitcoinExchange::BitcoinExchange() {}
 BitcoinExchange::~BitcoinExchange() {}
@@ -36,7 +37,7 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &src)
 double BitcoinExchange::stringToFloat(const std::string &str)
 {
 	char *endPtr;
-	float result = std::strtof(str.c_str(), &endPtr);
+	double result = std::strtod(str.c_str(), &endPtr);
 	
 	if (*endPtr) throw std::runtime_error("invalid value => " + str);
 	if (result < 0) throw std::runtime_error("not a positive number");
@@ -85,6 +86,10 @@ bool BitcoinExchange::validateDate(const std::string &date) {
 	if (strptime(date.c_str(), format, &tp) == NULL) return false;
 	if (!std::isdigit(date[date.size() - 1])) return false;
 	
+	if (tp.tm_year < 108 || (tp.tm_year == 108 && (tp.tm_mon < 9 || (tp.tm_mon == 9 && tp.tm_mday < 31)))) {
+        return false;
+    }
+	
 	return isDateInCorrectFormat(date);
 }
 
@@ -123,6 +128,44 @@ void BitcoinExchange::loadDB()
 	}
 }
 
+const std::string BitcoinExchange::formatFloat(double num) {
+    std::ostringstream oss;
+    oss << std::fixed << std::setprecision(2) << num;
+    std::string result = oss.str();
+    size_t dotPosition = result.find('.');
+
+    if (dotPosition != std::string::npos) {
+        size_t lastNonZero = result.find_last_not_of('0');
+
+        if (lastNonZero != std::string::npos && result[lastNonZero] == '.') {
+            result.erase(lastNonZero);
+        } else {
+            result.erase(result.find_last_not_of('0') + 1);
+        }
+    }
+    return result;
+}
+
+int BitcoinExchange::dateDifference(const std::string& date1, const std::string& date2) {
+    int day1 = std::atoi(date1.substr(8, 2).c_str());
+    int day2 = std::atoi(date2.substr(8, 2).c_str());
+    return std::abs(day2 - day1);
+}
+
+std::map<std::string, double>::iterator BitcoinExchange::findNearestDate(const std::string& targetDate) {
+    std::map<std::string, double>::iterator it = _map.lower_bound(targetDate);
+    if (it == _map.begin())
+        return it;
+
+    std::map<std::string, double>::iterator prev = it;
+	prev--;
+
+    int diffPrev = dateDifference(targetDate, prev->first);
+    int diffNext = dateDifference(targetDate, it->first);
+
+    return (diffPrev < diffNext) ? prev : it;
+}
+
 void BitcoinExchange::parseInput(const std::string &file)
 {
 	std::ifstream input(file.c_str());
@@ -131,6 +174,11 @@ void BitcoinExchange::parseInput(const std::string &file)
 	
 	std::string line;
 	std::getline(input, line);
+	if (line != "date | value")
+	{
+		std::cout << "Error: Invalid input file, missing or incorrect header \"date | value\"" << std::endl;
+		return;
+	}
 	while (std::getline(input, line))
 	{
 		//check date
@@ -150,16 +198,25 @@ void BitcoinExchange::parseInput(const std::string &file)
 		try
 		{
 			std::string tmp = line.substr(delimiter + 1);
-			float nbr = stringToFloat(tmp);
-			if (nbr > 1000) throw std::runtime_error("too large a number.");
+			trimSpaces(tmp);
+			if (tmp == ""){
+				std::cout << "Error: bad input => " << tmp << std::endl;
+				continue;
+			}
+			double nbr = stringToFloat(tmp);
+			if ((float)nbr > 1000) throw std::runtime_error("too large a number.");
 			
 			std::cout << dat << " => ";
+
+            std::map<std::string, double>::iterator it = findNearestDate(dat);
+            if (it == _map.end())
+                --it;
+
+            double result = nbr * it->second;
+
+            // Utilizar la función auxiliar para formatear el número
+            std::cout  << nbr << " = " << formatFloat(result) << std::endl;
 			
-			std::map<std::string, float>::iterator it = (this->_map.lower_bound(dat));
-			if (it == _map.end())
-				--it;
-			
-			std::cout << nbr << " = " << nbr * it->second << std::endl;
 		}
 		catch(const std::exception& e)
 		{
