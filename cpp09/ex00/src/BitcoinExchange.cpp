@@ -163,7 +163,7 @@ void BitcoinExchange::parseInput(const std::string &file)
 		}
 		catch(const std::exception& e)
 		{
-			std::cerr << "Error: " << e.what() << std::endl;
+			std::cout << "Error: " << e.what() << std::endl;
 		}
 	}
 	
@@ -176,7 +176,7 @@ void BitcoinExchange::process(std::string file)
 		loadDB();
 	}
 	catch (const std::exception &e) {
-		std::cerr << "Error: " << e.what() << std::endl;
+		std::cout << "Error: " << e.what() << std::endl;
 		return;
 	}
 
@@ -184,6 +184,6 @@ void BitcoinExchange::process(std::string file)
 		this->parseInput(file);
 	}
 	catch (std::exception &e) {
-		std::cerr << "Error: " << e.what() << std::endl;
+		std::cout << "Error: " << e.what() << std::endl;
 	}
 }
