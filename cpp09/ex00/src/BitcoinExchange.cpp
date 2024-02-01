@@ -70,12 +70,39 @@ bool isDateInCorrectFormat(const std::string& date) {
     char format;
 
     std::istringstream ss(date);
-    ss >> year >> format >> month >> format >> day;
-	
-    if (ss.fail() || ss.peek() != EOF || format != '-' || !isValidDate(year, month, day)) {
+    ss >> year >> format;
+
+    std::string dateString;
+    ss >> dateString;
+
+    size_t dashPos = dateString.find('-');
+    if (dashPos == std::string::npos || dashPos + 1 >= dateString.length()) {
+        std::cout << "Error: Invalid format => " << date << std::endl;
         return false;
     }
 
+    std::string monthStr = dateString.substr(0, dashPos);
+    std::string dayStr = dateString.substr(dashPos + 1);
+
+    if (monthStr.length() != 2 || dayStr.length() != 2) {
+        std::cout << "Error: Invalid month or day format => " << date << std::endl;
+        return false;
+    }
+
+    month = atoi(monthStr.c_str());
+    day = atoi(dayStr.c_str());
+
+    if (ss.fail() || ss.peek() != EOF || format != '-' || !isValidDate(year, month, day)) {
+        std::cout << "Error: Invalid date => " << date << std::endl;
+        return false;
+    }
+	
+	if (!isValidDate(year, month, day))
+    {
+        std::cout << "Error: Invalid month or day => " << date << std::endl;
+        return false;
+    }
+	
     return true;
 }
 
@@ -83,10 +110,17 @@ bool BitcoinExchange::validateDate(const std::string &date) {
 	const char *format = "%Y-%m-%d";
 	struct tm tp;
 	
-	if (strptime(date.c_str(), format, &tp) == NULL) return false;
-	if (!std::isdigit(date[date.size() - 1])) return false;
+	if (strptime(date.c_str(), format, &tp) == NULL) {
+		std::cout << "Error: bad input => " << date << std::endl;
+		return false;
+	}
+	if (!std::isdigit(date[date.size() - 1])){
+		std::cout << "Error: bad input => " << date << std::endl;
+		return false;
+	}
 	
 	if (tp.tm_year < 108 || (tp.tm_year == 108 && (tp.tm_mon < 9 || (tp.tm_mon == 9 && tp.tm_mday < 31)))) {
+		std::cout << "Error: Bitcoint did not exist in => " << date << std::endl;
         return false;
     }
 	
@@ -159,7 +193,8 @@ std::map<std::string, double>::iterator BitcoinExchange::findNearestDate(const s
 
     std::map<std::string, double>::iterator prev = it;
 	prev--;
-
+	if (it == _map.end())
+		return prev;
     int diffPrev = dateDifference(targetDate, prev->first);
     int diffNext = dateDifference(targetDate, it->first);
 
@@ -191,7 +226,7 @@ void BitcoinExchange::parseInput(const std::string &file)
 		std::string dat = line.substr(0, delimiter);
 		trimSpaces(dat);
 		if (!validateDate(dat)) {
-        	std::cout << "Error: bad input => " << dat << std::endl;
+        	//std::cout << "Error: bad input => " << dat << std::endl;
 			continue;
       	}
 		//check value
@@ -204,7 +239,7 @@ void BitcoinExchange::parseInput(const std::string &file)
 				continue;
 			}
 			double nbr = stringToFloat(tmp);
-			if ((float)nbr > 1000) throw std::runtime_error("too large a number.");
+			if ((float)nbr > 1000) throw std::runtime_error("too large a number");
 			
 			std::cout << dat << " => ";
 
@@ -228,19 +263,12 @@ void BitcoinExchange::parseInput(const std::string &file)
 
 void BitcoinExchange::process(std::string file)
 {
-	(void)file;
 	try {
 		loadDB();
-	}
-	catch (const std::exception &e) {
-		std::cout << "Error: " << e.what() << std::endl;
-		return;
-	}
-
-	try {
-		this->parseInput(file);
+		parseInput(file);
 	}
 	catch (std::exception &e) {
 		std::cout << "Error: " << e.what() << std::endl;
+		return;
 	}
 }
