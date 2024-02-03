@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 20:07:53 by imurugar          #+#    #+#             */
-/*   Updated: 2024/01/23 13:45:36 by imurugar         ###   ########.fr       */
+/*   Updated: 2024/02/03 19:10:20 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -243,9 +243,18 @@ void BitcoinExchange::parseInput(const std::string &file)
 			
 			std::cout << dat << " => ";
 
+			/*
+			//Find real nearest (are better in my opinion, but correction sheets say "nearest lower")
             std::map<std::string, double>::iterator it = findNearestDate(dat);
             if (it == _map.end())
                 --it;
+			*/
+		
+			//Correction request
+			std::map<std::string, double>::iterator it = _map.lower_bound(dat);
+			if (it != _map.begin() && it->first != dat)
+				--it;
+
 
             double result = nbr * it->second;
 
