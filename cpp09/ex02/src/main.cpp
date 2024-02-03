@@ -12,6 +12,8 @@
 
 #include "PmergeMe.hpp"
 
+// based on https://iq.opengenus.org/merge-insertion-sort
+
 static int errUsage()
 {
 	std::cout << "Error: invalid arguments" << std::endl;
