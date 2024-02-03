@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 21:18:39 by imurugar          #+#    #+#             */
-/*   Updated: 2024/01/02 00:06:39 by imurugar         ###   ########.fr       */
+/*   Updated: 2024/02/03 19:37:16 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,5 @@ void PmergeMe::performShort()
 	std::cout << "After: ";
     display(this->_deque);
     std::cout << "Time to process a range of " << this->_deque.size() << " elements with std::deque container: " << time1 << " us" << std::endl;
-    std::cout << "Time to process a range of " << this->_vector.size() << " elements with std::list container: " << time2 << " us" << std::endl;
+    std::cout << "Time to process a range of " << this->_vector.size() << " elements with std::vector container: " << time2 << " us" << std::endl;
 }
