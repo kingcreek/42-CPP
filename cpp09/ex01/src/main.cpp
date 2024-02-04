@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 07:47:04 by imurugar          #+#    #+#             */
-/*   Updated: 2024/01/01 09:46:10 by imurugar         ###   ########.fr       */
+/*   Updated: 2024/02/04 14:57:54 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,10 @@ static int errUsage()
 // https://paodayag.dev/reverse-polish-notation-js-parser/
 int main(int argc, char *argv[])
 {
-
 	if (argc != 2)
 		return errUsage();
 
 	RPN rpn = RPN();
-
 	try
 	{
 		rpn.processExpression(argv[1]);

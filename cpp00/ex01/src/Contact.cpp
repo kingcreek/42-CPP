@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 06:11:15 by imurugar          #+#    #+#             */
-/*   Updated: 2023/08/12 14:40:25 by imurugar         ###   ########.fr       */
+/*   Updated: 2024/02/04 14:41:06 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,7 +169,7 @@ std::string Contact::AdjustColumnWidth(const std::string& str, int colWidth) con
 		"aañ" -> 4 byte
 
 		substr function want ammount of characters can be removed as second parameter, but are not safe to process non ASCII/ISO-8859-1 characters,
-		like utf-8 (ñ - 2 bytes) or like:(😋 - 4 bytes), then if the imput have any multibyte character like "ñ" if we skip only 1, the output are wrong.
+		like utf-8 (ñ - 2 bytes) or like:(😋 - 4 bytes), then if the input have any multibyte character like "ñ" if we skip only 1, the output are wrong.
 		And we cant use std::wstring or wchar_t like in c++11/17 (*sad face*... sorry, in 4 bytes 😔 better), i improvise this to try manage non ASCII characters.
 		*/
         return str.substr(0, i) + ".";
