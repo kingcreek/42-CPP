@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 14:59:00 by imurugar          #+#    #+#             */
-/*   Updated: 2024/02/04 14:59:02 by imurugar         ###   ########.fr       */
+/*   Updated: 2024/02/11 08:28:50 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ bool isDateInCorrectFormat(const std::string& date) {
 	std::string dateString;
 	ss >> dateString;
 
+
 	size_t dashPos = dateString.find('-');
 	if (dashPos == std::string::npos || dashPos + 1 >= dateString.length()) {
 		std::cout << "Error: Invalid format => " << date << std::endl;
@@ -135,13 +136,13 @@ void BitcoinExchange::fillMap(std::string line)
 {
 	size_t findPos = line.find(',');
   	if (findPos == std::string::npos)
-		throw std::runtime_error("fatal: cannot find delimiter");
-	
-	trimSpaces(line);
+		throw std::runtime_error("cannot find delimiter");
 	
 	std::string key = line.substr(0, findPos);
 	std::string value = line.substr(findPos + 1);
-
+	
+	if (!validateDate(key))
+		throw std::runtime_error("invalid date => " + key);
 	this->_map[key] = stringToFloat(value);
 }
 
@@ -154,6 +155,9 @@ void BitcoinExchange::loadDB()
 	std::string line;
 	// skip first line in db file
 	std::getline(db, line);
+
+	if (line != "date,exchange_rate")
+		throw std::runtime_error("Error: Invalid data file, missing or incorrect header \"date,exchange_rate\"");
 
 	// for each line, store value into {map <key, value>}
 	while (std::getline(db, line))

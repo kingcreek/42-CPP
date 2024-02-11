@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 21:18:39 by imurugar          #+#    #+#             */
-/*   Updated: 2024/02/03 19:37:16 by imurugar         ###   ########.fr       */
+/*   Updated: 2024/02/11 11:57:45 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,17 +63,17 @@ void PmergeMe::performShort()
     display(this->_deque);
 
 	clock_t start1 = clock();
-    mergeInsertSort(this->_deque, 0, this->_deque.size() - 1);
+	mergeInsertSort(this->_deque);
+    clock_t end1 = clock();
 	if (!isSorted(this->_deque))
         std::cout << "Failed to sort deque!" << std::endl;
-    clock_t end1 = clock();
     double time1 = static_cast<double>(end1 - start1) / (CLOCKS_PER_SEC / 1000.0);
 
     clock_t start2 = clock();
-    mergeInsertSort(this->_vector, 0, this->_vector.size() - 1);
+	mergeInsertSort(this->_vector);
+    clock_t end2 = clock();
 	if (!isSorted(this->_vector))
         std::cout << "Failed to sort vector!" << std::endl;
-    clock_t end2 = clock();
     double time2 = static_cast<double>(end2 - start2) / (CLOCKS_PER_SEC / 1000.0);
 
 	std::cout << "After: ";

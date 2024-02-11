@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 21:04:36 by imurugar          #+#    #+#             */
-/*   Updated: 2024/02/04 18:14:40 by imurugar         ###   ########.fr       */
+/*   Updated: 2024/02/11 08:32:03 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,7 @@ void RPN::processExpression(const std::string &expression)
 		}
 		// There are no more conditions so something has gone wrong
 		else
-            throw std::runtime_error("Error: Invalid token =>" + token);
+            throw std::runtime_error("Error: Invalid token => " + token);
 	}
 	if (_stack.size() != 1)
         throw std::runtime_error("Error: Invalid expression");
