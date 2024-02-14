@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 21:03:42 by imurugar          #+#    #+#             */
-/*   Updated: 2024/02/04 17:39:46 by imurugar         ###   ########.fr       */
+/*   Updated: 2024/02/14 07:46:58 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <sstream>
 #include <stdexcept>
 #include <cstdlib>
+#include <climits>
 
 class RPN
 {
@@ -29,7 +30,7 @@ private:
     int  performOperation(const std::string &oper, int operand1, int operand2);
 	bool isNumber(const std::string &str);
 	void exec(std::string token);
-	int extractNumber(std::string &token, std::istringstream& iss);
+	long extractNumber(std::string &token, std::istringstream& iss);
 	void extractOperator(std::string &token, std::istringstream& iss);
 
 public:

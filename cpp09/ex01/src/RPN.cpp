@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 21:04:36 by imurugar          #+#    #+#             */
-/*   Updated: 2024/02/11 08:32:03 by imurugar         ###   ########.fr       */
+/*   Updated: 2024/02/14 08:12:33 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,12 @@ void RPN::exec(std::string token)
 		throw std::runtime_error("Error: Insufficient operands for operator");
 		
 	int operand2 = _stack.top();
+	
 	_stack.pop();
 	
 	int operand1 = _stack.top();
 	_stack.pop();
-
+	
 	 int result = performOperation(token, operand1, operand2);
 	_stack.push(result);
 }
@@ -72,7 +73,15 @@ bool RPN::isNumber(const std::string &str)
 	return false;
 }
 
-int RPN::extractNumber(std::string &token, std::istringstream& iss)
+static void checkNumberSize(std::string const &str, long nbr)
+{
+	if (nbr >= 10)
+		throw std::runtime_error("Error: Invalid number => " + str + " Cannot be greater than 10");
+	else if (nbr < INT_MIN)
+		throw std::runtime_error("Error: Invalid number => " + str + " Cannot be lower than INT_MIN");
+}
+
+long RPN::extractNumber(std::string &token, std::istringstream& iss)
 {
 	int sign = 1;
 	std::string str(token);
@@ -83,17 +92,24 @@ int RPN::extractNumber(std::string &token, std::istringstream& iss)
 	}
 	
 	if (str.length() == 1)
-		return (std::atoi(token.c_str()));
+	{
+		checkNumberSize(token, std::atol(token.c_str()));
+		return (std::atol(token.c_str()));
+	}
 	std::size_t found = str.find_first_not_of("0123456789");
-	if (found == std::string::npos) 
-		return (std::atoi(token.c_str()));
+	if (found == std::string::npos)
+	{
+		checkNumberSize(token, std::atol(token.c_str()));
+		return (std::atol(token.c_str()));
+	}
 	int iss_tellg = iss.tellg();
 	if (iss_tellg == -1)
 		iss.str(str.substr(found));
 	else
 		iss.str(str.substr(found) + iss.str().substr(iss.tellg()));
     iss.clear();
-	return (std::atoi(str.substr(0, found).c_str()) * sign);
+	checkNumberSize(str.substr(0, found).c_str(), std::atol(str.substr(0, found).c_str()) * sign);
+	return (std::atol(str.substr(0, found).c_str()) * sign);
 }
 
 void RPN::extractOperator(std::string &token, std::istringstream& iss)
@@ -138,15 +154,9 @@ void RPN::processExpression(const std::string &expression)
 		// It's a simple number	
 		if (isNumber(token)) {
 			//if number it's followed by operators, separate it
-			int extractedNumber = std::atoi(token.c_str());
+			long extractedNumber = std::atoi(token.c_str());
 			if (token.length() > 1)
 				extractedNumber = extractNumber(token, iss);
-			if (extractedNumber >= 10)
-			{
-				std::ostringstream oss;
-				oss << extractedNumber;
-				throw std::runtime_error("Error: Invalid number => " + oss.str() + " Cannot be greater than 10");
-			}
 			// Add to stack
             _stack.push(extractedNumber);
 		}
