@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 21:17:35 by imurugar          #+#    #+#             */
-/*   Updated: 2024/02/11 12:14:09 by imurugar         ###   ########.fr       */
+/*   Updated: 2024/02/14 08:19:23 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ class PmergeMe
 		void mergeInsertSort(Container &m)
 		{
 			size_t len = m.size();
-			size_t threshold = 70;
+			size_t threshold = calculateThreshold(len);
 
 			if (len > threshold)
 			{
