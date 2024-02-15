@@ -6,7 +6,7 @@
 /*   By: imurugar <imurugar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 21:18:39 by imurugar          #+#    #+#             */
-/*   Updated: 2024/02/11 11:57:45 by imurugar         ###   ########.fr       */
+/*   Updated: 2024/02/15 06:52:25 by imurugar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &src)
 
 int PmergeMe::calculateThreshold(int threshold)
 {
-    return (std::max(10, threshold / 10));
+	return (std::max(10, threshold / 10));
 }
 
 void PmergeMe::validateArgument(std::string arg)
@@ -60,24 +60,24 @@ void PmergeMe::parseArguments(const char *argv[])
 void PmergeMe::performShort()
 {
 	std::cout << "Before: ";
-    display(this->_deque);
+	display(this->_deque);
 
 	clock_t start1 = clock();
-	mergeInsertSort(this->_deque);
-    clock_t end1 = clock();
+	mergeInsertSort(this->_deque, 0, this->_deque.size() - 1);
+	clock_t end1 = clock();
 	if (!isSorted(this->_deque))
-        std::cout << "Failed to sort deque!" << std::endl;
-    double time1 = static_cast<double>(end1 - start1) / (CLOCKS_PER_SEC / 1000.0);
+		std::cout << "Failed to sort deque!" << std::endl;
+	double time1 = static_cast<double>(end1 - start1) / (CLOCKS_PER_SEC / 1000.0);
 
-    clock_t start2 = clock();
-	mergeInsertSort(this->_vector);
-    clock_t end2 = clock();
+	clock_t start2 = clock();
+	mergeInsertSort(this->_vector, 0, this->_vector.size() - 1);
+	clock_t end2 = clock();
 	if (!isSorted(this->_vector))
-        std::cout << "Failed to sort vector!" << std::endl;
-    double time2 = static_cast<double>(end2 - start2) / (CLOCKS_PER_SEC / 1000.0);
+		std::cout << "Failed to sort vector!" << std::endl;
+	double time2 = static_cast<double>(end2 - start2) / (CLOCKS_PER_SEC / 1000.0);
 
 	std::cout << "After: ";
-    display(this->_deque);
-    std::cout << "Time to process a range of " << this->_deque.size() << " elements with std::deque container: " << time1 << " us" << std::endl;
-    std::cout << "Time to process a range of " << this->_vector.size() << " elements with std::vector container: " << time2 << " us" << std::endl;
+	display(this->_deque);
+	std::cout << "Time to process a range of " << this->_deque.size() << " elements with std::deque container: " << time1 << " us" << std::endl;
+	std::cout << "Time to process a range of " << this->_vector.size() << " elements with std::vector container: " << time2 << " us" << std::endl;
 }
